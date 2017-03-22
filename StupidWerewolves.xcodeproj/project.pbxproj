@@ -1,0 +1,638 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4B1351F71E62A24A00CBAD00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1351F61E62A24A00CBAD00 /* AppDelegate.swift */; };
+		4B1351FC1E62A24A00CBAD00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1351FA1E62A24A00CBAD00 /* Main.storyboard */; };
+		4B1351FE1E62A24A00CBAD00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B1351FD1E62A24A00CBAD00 /* Assets.xcassets */; };
+		4B1352011E62A24A00CBAD00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1351FF1E62A24A00CBAD00 /* LaunchScreen.storyboard */; };
+		4B13520C1E62A24B00CBAD00 /* StupidWerewolvesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B13520B1E62A24B00CBAD00 /* StupidWerewolvesTests.swift */; };
+		4B1352171E62A24B00CBAD00 /* StupidWerewolvesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1352161E62A24B00CBAD00 /* StupidWerewolvesUITests.swift */; };
+		4B1FC7541E8250B2002E3941 /* GameCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1FC7531E8250B2002E3941 /* GameCardCell.swift */; };
+		4B1FC7621E827830002E3941 /* GameFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1FC7611E827830002E3941 /* GameFlow.swift */; };
+		4B800E081E7A7823007BF74C /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E021E7A7823007BF74C /* GameConfig.swift */; };
+		4B800E091E7A7823007BF74C /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E031E7A7823007BF74C /* GameManager.swift */; };
+		4B800E0A1E7A7823007BF74C /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E041E7A7823007BF74C /* GameModel.swift */; };
+		4B800E0B1E7A7823007BF74C /* RoleManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E061E7A7823007BF74C /* RoleManger.swift */; };
+		4B800E0C1E7A7823007BF74C /* RoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E071E7A7823007BF74C /* RoleModel.swift */; };
+		4B800E131E7A8ABE007BF74C /* ConfigGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E111E7A8ABE007BF74C /* ConfigGameViewController.swift */; };
+		4B800E141E7A8ABE007BF74C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E121E7A8ABE007BF74C /* MainViewController.swift */; };
+		4B800E161E7A953E007BF74C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E151E7A953E007BF74C /* GameViewController.swift */; };
+		4BB2E8B51E8217860050075E /* SpeakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB2E8B41E8217860050075E /* SpeakManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4B1352081E62A24B00CBAD00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B1351EB1E62A24900CBAD00 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B1351F21E62A24900CBAD00;
+			remoteInfo = StupidWerewolves;
+		};
+		4B1352131E62A24B00CBAD00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B1351EB1E62A24900CBAD00 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B1351F21E62A24900CBAD00;
+			remoteInfo = StupidWerewolves;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4B1351F31E62A24A00CBAD00 /* StupidWerewolves.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StupidWerewolves.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B1351F61E62A24A00CBAD00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4B1351FB1E62A24A00CBAD00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4B1351FD1E62A24A00CBAD00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4B1352001E62A24A00CBAD00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4B1352021E62A24A00CBAD00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B1352071E62A24B00CBAD00 /* StupidWerewolvesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StupidWerewolvesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B13520B1E62A24B00CBAD00 /* StupidWerewolvesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StupidWerewolvesTests.swift; sourceTree = "<group>"; };
+		4B13520D1E62A24B00CBAD00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B1352121E62A24B00CBAD00 /* StupidWerewolvesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StupidWerewolvesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B1352161E62A24B00CBAD00 /* StupidWerewolvesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StupidWerewolvesUITests.swift; sourceTree = "<group>"; };
+		4B1352181E62A24B00CBAD00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B1FC7531E8250B2002E3941 /* GameCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCardCell.swift; sourceTree = "<group>"; };
+		4B1FC7611E827830002E3941 /* GameFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameFlow.swift; sourceTree = "<group>"; };
+		4B800E021E7A7823007BF74C /* GameConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
+		4B800E031E7A7823007BF74C /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		4B800E041E7A7823007BF74C /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		4B800E061E7A7823007BF74C /* RoleManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleManger.swift; sourceTree = "<group>"; };
+		4B800E071E7A7823007BF74C /* RoleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleModel.swift; sourceTree = "<group>"; };
+		4B800E111E7A8ABE007BF74C /* ConfigGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigGameViewController.swift; sourceTree = "<group>"; };
+		4B800E121E7A8ABE007BF74C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4B800E151E7A953E007BF74C /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		4BB2E8B41E8217860050075E /* SpeakManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4B1351F01E62A24900CBAD00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B1352041E62A24B00CBAD00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B13520F1E62A24B00CBAD00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4B1351EA1E62A24900CBAD00 = {
+			isa = PBXGroup;
+			children = (
+				4B1351F51E62A24A00CBAD00 /* StupidWerewolves */,
+				4B13520A1E62A24B00CBAD00 /* StupidWerewolvesTests */,
+				4B1352151E62A24B00CBAD00 /* StupidWerewolvesUITests */,
+				4B1351F41E62A24A00CBAD00 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4B1351F41E62A24A00CBAD00 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4B1351F31E62A24A00CBAD00 /* StupidWerewolves.app */,
+				4B1352071E62A24B00CBAD00 /* StupidWerewolvesTests.xctest */,
+				4B1352121E62A24B00CBAD00 /* StupidWerewolvesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4B1351F51E62A24A00CBAD00 /* StupidWerewolves */ = {
+			isa = PBXGroup;
+			children = (
+				4B1351F61E62A24A00CBAD00 /* AppDelegate.swift */,
+				4B1352281E62A92300CBAD00 /* Model */,
+				4B800E101E7A8ABE007BF74C /* ViewController */,
+				4B1FC7521E825095002E3941 /* View */,
+				4BB2E8B11E82154B0050075E /* ViewModel */,
+				4B1351FA1E62A24A00CBAD00 /* Main.storyboard */,
+				4B1351FD1E62A24A00CBAD00 /* Assets.xcassets */,
+				4B1351FF1E62A24A00CBAD00 /* LaunchScreen.storyboard */,
+				4B1352021E62A24A00CBAD00 /* Info.plist */,
+			);
+			path = StupidWerewolves;
+			sourceTree = "<group>";
+		};
+		4B13520A1E62A24B00CBAD00 /* StupidWerewolvesTests */ = {
+			isa = PBXGroup;
+			children = (
+				4B13520B1E62A24B00CBAD00 /* StupidWerewolvesTests.swift */,
+				4B13520D1E62A24B00CBAD00 /* Info.plist */,
+			);
+			path = StupidWerewolvesTests;
+			sourceTree = "<group>";
+		};
+		4B1352151E62A24B00CBAD00 /* StupidWerewolvesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4B1352161E62A24B00CBAD00 /* StupidWerewolvesUITests.swift */,
+				4B1352181E62A24B00CBAD00 /* Info.plist */,
+			);
+			path = StupidWerewolvesUITests;
+			sourceTree = "<group>";
+		};
+		4B1352281E62A92300CBAD00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4B1FC7601E82781C002E3941 /* Flow */,
+				4B800E011E7A7823007BF74C /* Game */,
+				4B800E051E7A7823007BF74C /* Role */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4B1FC7521E825095002E3941 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4B1FC7531E8250B2002E3941 /* GameCardCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4B1FC7601E82781C002E3941 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				4B1FC7611E827830002E3941 /* GameFlow.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		4B800E011E7A7823007BF74C /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				4B800E021E7A7823007BF74C /* GameConfig.swift */,
+				4B800E031E7A7823007BF74C /* GameManager.swift */,
+				4B800E041E7A7823007BF74C /* GameModel.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		4B800E051E7A7823007BF74C /* Role */ = {
+			isa = PBXGroup;
+			children = (
+				4B800E061E7A7823007BF74C /* RoleManger.swift */,
+				4B800E071E7A7823007BF74C /* RoleModel.swift */,
+			);
+			path = Role;
+			sourceTree = "<group>";
+		};
+		4B800E101E7A8ABE007BF74C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4B800E121E7A8ABE007BF74C /* MainViewController.swift */,
+				4B800E111E7A8ABE007BF74C /* ConfigGameViewController.swift */,
+				4B800E151E7A953E007BF74C /* GameViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4BB2E8B11E82154B0050075E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4BB2E8B41E8217860050075E /* SpeakManager.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4B1351F21E62A24900CBAD00 /* StupidWerewolves */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B13521B1E62A24B00CBAD00 /* Build configuration list for PBXNativeTarget "StupidWerewolves" */;
+			buildPhases = (
+				4B1351EF1E62A24900CBAD00 /* Sources */,
+				4B1351F01E62A24900CBAD00 /* Frameworks */,
+				4B1351F11E62A24900CBAD00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StupidWerewolves;
+			productName = StupidWerewolves;
+			productReference = 4B1351F31E62A24A00CBAD00 /* StupidWerewolves.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4B1352061E62A24B00CBAD00 /* StupidWerewolvesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B13521E1E62A24B00CBAD00 /* Build configuration list for PBXNativeTarget "StupidWerewolvesTests" */;
+			buildPhases = (
+				4B1352031E62A24B00CBAD00 /* Sources */,
+				4B1352041E62A24B00CBAD00 /* Frameworks */,
+				4B1352051E62A24B00CBAD00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B1352091E62A24B00CBAD00 /* PBXTargetDependency */,
+			);
+			name = StupidWerewolvesTests;
+			productName = StupidWerewolvesTests;
+			productReference = 4B1352071E62A24B00CBAD00 /* StupidWerewolvesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4B1352111E62A24B00CBAD00 /* StupidWerewolvesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B1352211E62A24B00CBAD00 /* Build configuration list for PBXNativeTarget "StupidWerewolvesUITests" */;
+			buildPhases = (
+				4B13520E1E62A24B00CBAD00 /* Sources */,
+				4B13520F1E62A24B00CBAD00 /* Frameworks */,
+				4B1352101E62A24B00CBAD00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B1352141E62A24B00CBAD00 /* PBXTargetDependency */,
+			);
+			name = StupidWerewolvesUITests;
+			productName = StupidWerewolvesUITests;
+			productReference = 4B1352121E62A24B00CBAD00 /* StupidWerewolvesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4B1351EB1E62A24900CBAD00 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "刘鑫";
+				TargetAttributes = {
+					4B1351F21E62A24900CBAD00 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = ALC8X8425P;
+						ProvisioningStyle = Automatic;
+					};
+					4B1352061E62A24B00CBAD00 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = ALC8X8425P;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4B1351F21E62A24900CBAD00;
+					};
+					4B1352111E62A24B00CBAD00 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = ALC8X8425P;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4B1351F21E62A24900CBAD00;
+					};
+				};
+			};
+			buildConfigurationList = 4B1351EE1E62A24900CBAD00 /* Build configuration list for PBXProject "StupidWerewolves" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4B1351EA1E62A24900CBAD00;
+			productRefGroup = 4B1351F41E62A24A00CBAD00 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4B1351F21E62A24900CBAD00 /* StupidWerewolves */,
+				4B1352061E62A24B00CBAD00 /* StupidWerewolvesTests */,
+				4B1352111E62A24B00CBAD00 /* StupidWerewolvesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4B1351F11E62A24900CBAD00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B1352011E62A24A00CBAD00 /* LaunchScreen.storyboard in Resources */,
+				4B1351FE1E62A24A00CBAD00 /* Assets.xcassets in Resources */,
+				4B1351FC1E62A24A00CBAD00 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B1352051E62A24B00CBAD00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B1352101E62A24B00CBAD00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4B1351EF1E62A24900CBAD00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B1FC7541E8250B2002E3941 /* GameCardCell.swift in Sources */,
+				4B800E0A1E7A7823007BF74C /* GameModel.swift in Sources */,
+				4B800E0C1E7A7823007BF74C /* RoleModel.swift in Sources */,
+				4B800E091E7A7823007BF74C /* GameManager.swift in Sources */,
+				4BB2E8B51E8217860050075E /* SpeakManager.swift in Sources */,
+				4B800E0B1E7A7823007BF74C /* RoleManger.swift in Sources */,
+				4B800E161E7A953E007BF74C /* GameViewController.swift in Sources */,
+				4B800E081E7A7823007BF74C /* GameConfig.swift in Sources */,
+				4B1351F71E62A24A00CBAD00 /* AppDelegate.swift in Sources */,
+				4B800E131E7A8ABE007BF74C /* ConfigGameViewController.swift in Sources */,
+				4B800E141E7A8ABE007BF74C /* MainViewController.swift in Sources */,
+				4B1FC7621E827830002E3941 /* GameFlow.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B1352031E62A24B00CBAD00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B13520C1E62A24B00CBAD00 /* StupidWerewolvesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B13520E1E62A24B00CBAD00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B1352171E62A24B00CBAD00 /* StupidWerewolvesUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B1352091E62A24B00CBAD00 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B1351F21E62A24900CBAD00 /* StupidWerewolves */;
+			targetProxy = 4B1352081E62A24B00CBAD00 /* PBXContainerItemProxy */;
+		};
+		4B1352141E62A24B00CBAD00 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B1351F21E62A24900CBAD00 /* StupidWerewolves */;
+			targetProxy = 4B1352131E62A24B00CBAD00 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4B1351FA1E62A24A00CBAD00 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B1351FB1E62A24A00CBAD00 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4B1351FF1E62A24A00CBAD00 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B1352001E62A24A00CBAD00 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4B1352191E62A24B00CBAD00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4B13521A1E62A24B00CBAD00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4B13521C1E62A24B00CBAD00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ALC8X8425P;
+				INFOPLIST_FILE = StupidWerewolves/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hna.eking.mobile.StupidWerewolves;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4B13521D1E62A24B00CBAD00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ALC8X8425P;
+				INFOPLIST_FILE = StupidWerewolves/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hna.eking.mobile.StupidWerewolves;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		4B13521F1E62A24B00CBAD00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ALC8X8425P;
+				INFOPLIST_FILE = StupidWerewolvesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hna.eking.mobile.StupidWerewolvesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StupidWerewolves.app/StupidWerewolves";
+			};
+			name = Debug;
+		};
+		4B1352201E62A24B00CBAD00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ALC8X8425P;
+				INFOPLIST_FILE = StupidWerewolvesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hna.eking.mobile.StupidWerewolvesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StupidWerewolves.app/StupidWerewolves";
+			};
+			name = Release;
+		};
+		4B1352221E62A24B00CBAD00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = ALC8X8425P;
+				INFOPLIST_FILE = StupidWerewolvesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hna.eking.mobile.StupidWerewolvesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = StupidWerewolves;
+			};
+			name = Debug;
+		};
+		4B1352231E62A24B00CBAD00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = ALC8X8425P;
+				INFOPLIST_FILE = StupidWerewolvesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hna.eking.mobile.StupidWerewolvesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = StupidWerewolves;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4B1351EE1E62A24900CBAD00 /* Build configuration list for PBXProject "StupidWerewolves" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B1352191E62A24B00CBAD00 /* Debug */,
+				4B13521A1E62A24B00CBAD00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B13521B1E62A24B00CBAD00 /* Build configuration list for PBXNativeTarget "StupidWerewolves" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B13521C1E62A24B00CBAD00 /* Debug */,
+				4B13521D1E62A24B00CBAD00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B13521E1E62A24B00CBAD00 /* Build configuration list for PBXNativeTarget "StupidWerewolvesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B13521F1E62A24B00CBAD00 /* Debug */,
+				4B1352201E62A24B00CBAD00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B1352211E62A24B00CBAD00 /* Build configuration list for PBXNativeTarget "StupidWerewolvesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B1352221E62A24B00CBAD00 /* Debug */,
+				4B1352231E62A24B00CBAD00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4B1351EB1E62A24900CBAD00 /* Project object */;
+}
