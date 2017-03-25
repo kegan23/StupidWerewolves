@@ -15,6 +15,10 @@
 		4B1352171E62A24B00CBAD00 /* StupidWerewolvesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1352161E62A24B00CBAD00 /* StupidWerewolvesUITests.swift */; };
 		4B1FC7541E8250B2002E3941 /* GameCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1FC7531E8250B2002E3941 /* GameCardCell.swift */; };
 		4B1FC7621E827830002E3941 /* GameFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1FC7611E827830002E3941 /* GameFlow.swift */; };
+		4B518CF31E850C6C0015DF4C /* Role.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B518CF21E850C6B0015DF4C /* Role.plist */; };
+		4B518CF51E850E060015DF4C /* Flows.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B518CF41E850E060015DF4C /* Flows.plist */; };
+		4B5E28DD1E836B5200726783 /* GameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E28DC1E836B5200726783 /* GameCardView.swift */; };
+		4B5E28DF1E836B5E00726783 /* GameCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5E28DE1E836B5E00726783 /* GameCardView.xib */; };
 		4B800E081E7A7823007BF74C /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E021E7A7823007BF74C /* GameConfig.swift */; };
 		4B800E091E7A7823007BF74C /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E031E7A7823007BF74C /* GameManager.swift */; };
 		4B800E0A1E7A7823007BF74C /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E041E7A7823007BF74C /* GameModel.swift */; };
@@ -24,6 +28,7 @@
 		4B800E141E7A8ABE007BF74C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E121E7A8ABE007BF74C /* MainViewController.swift */; };
 		4B800E161E7A953E007BF74C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E151E7A953E007BF74C /* GameViewController.swift */; };
 		4BB2E8B51E8217860050075E /* SpeakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB2E8B41E8217860050075E /* SpeakManager.swift */; };
+		4BD31D201E861BC9005F2D0F /* GameOneDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD31D1F1E861BC9005F2D0F /* GameOneDayModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +63,10 @@
 		4B1352181E62A24B00CBAD00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B1FC7531E8250B2002E3941 /* GameCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCardCell.swift; sourceTree = "<group>"; };
 		4B1FC7611E827830002E3941 /* GameFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameFlow.swift; sourceTree = "<group>"; };
+		4B518CF21E850C6B0015DF4C /* Role.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Role.plist; sourceTree = "<group>"; };
+		4B518CF41E850E060015DF4C /* Flows.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Flows.plist; sourceTree = "<group>"; };
+		4B5E28DC1E836B5200726783 /* GameCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCardView.swift; sourceTree = "<group>"; };
+		4B5E28DE1E836B5E00726783 /* GameCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameCardView.xib; sourceTree = "<group>"; };
 		4B800E021E7A7823007BF74C /* GameConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
 		4B800E031E7A7823007BF74C /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		4B800E041E7A7823007BF74C /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
@@ -67,6 +76,7 @@
 		4B800E121E7A8ABE007BF74C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4B800E151E7A953E007BF74C /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		4BB2E8B41E8217860050075E /* SpeakManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakManager.swift; sourceTree = "<group>"; };
+		4BD31D1F1E861BC9005F2D0F /* GameOneDayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOneDayModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +161,6 @@
 		4B1352281E62A92300CBAD00 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4B1FC7601E82781C002E3941 /* Flow */,
 				4B800E011E7A7823007BF74C /* Game */,
 				4B800E051E7A7823007BF74C /* Role */,
 			);
@@ -161,25 +170,22 @@
 		4B1FC7521E825095002E3941 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4B5E28DC1E836B5200726783 /* GameCardView.swift */,
+				4B5E28DE1E836B5E00726783 /* GameCardView.xib */,
 				4B1FC7531E8250B2002E3941 /* GameCardCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		4B1FC7601E82781C002E3941 /* Flow */ = {
-			isa = PBXGroup;
-			children = (
-				4B1FC7611E827830002E3941 /* GameFlow.swift */,
-			);
-			path = Flow;
-			sourceTree = "<group>";
-		};
 		4B800E011E7A7823007BF74C /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				4B1FC7611E827830002E3941 /* GameFlow.swift */,
 				4B800E021E7A7823007BF74C /* GameConfig.swift */,
 				4B800E031E7A7823007BF74C /* GameManager.swift */,
 				4B800E041E7A7823007BF74C /* GameModel.swift */,
+				4BD31D1F1E861BC9005F2D0F /* GameOneDayModel.swift */,
+				4B518CF41E850E060015DF4C /* Flows.plist */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -189,6 +195,7 @@
 			children = (
 				4B800E061E7A7823007BF74C /* RoleManger.swift */,
 				4B800E071E7A7823007BF74C /* RoleModel.swift */,
+				4B518CF21E850C6B0015DF4C /* Role.plist */,
 			);
 			path = Role;
 			sourceTree = "<group>";
@@ -321,9 +328,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B5E28DF1E836B5E00726783 /* GameCardView.xib in Resources */,
 				4B1352011E62A24A00CBAD00 /* LaunchScreen.storyboard in Resources */,
+				4B518CF51E850E060015DF4C /* Flows.plist in Resources */,
 				4B1351FE1E62A24A00CBAD00 /* Assets.xcassets in Resources */,
 				4B1351FC1E62A24A00CBAD00 /* Main.storyboard in Resources */,
+				4B518CF31E850C6C0015DF4C /* Role.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,8 +360,10 @@
 			files = (
 				4B1FC7541E8250B2002E3941 /* GameCardCell.swift in Sources */,
 				4B800E0A1E7A7823007BF74C /* GameModel.swift in Sources */,
+				4B5E28DD1E836B5200726783 /* GameCardView.swift in Sources */,
 				4B800E0C1E7A7823007BF74C /* RoleModel.swift in Sources */,
 				4B800E091E7A7823007BF74C /* GameManager.swift in Sources */,
+				4BD31D201E861BC9005F2D0F /* GameOneDayModel.swift in Sources */,
 				4BB2E8B51E8217860050075E /* SpeakManager.swift in Sources */,
 				4B800E0B1E7A7823007BF74C /* RoleManger.swift in Sources */,
 				4B800E161E7A953E007BF74C /* GameViewController.swift in Sources */,

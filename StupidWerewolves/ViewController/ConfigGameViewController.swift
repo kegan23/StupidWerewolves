@@ -18,13 +18,13 @@ class ConfigGameViewController: UIViewController {
     @IBOutlet var wolves: UILabel!
     @IBOutlet var humen: UILabel!
     @IBOutlet var gods: UILabel!
-    @IBOutlet var numberInput: UITextField!
+    
+    @IBOutlet var numberLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initData()
-        prepareViewConfig()
         refreshUI()
         
         // Do any additional setup after loading the view.
@@ -41,26 +41,13 @@ class ConfigGameViewController: UIViewController {
         config.gamerNum = Default_Gamer_Num
     }
     
-    func prepareViewConfig() {
-        
-        numberInput.text = String(Default_Gamer_Num)
-        
-        let tapGR = UITapGestureRecognizer.init(target: self, action: #selector(tapAction))
-        tapGR.numberOfTapsRequired = 1
-        tapGR.numberOfTouchesRequired = 1
-        self.view.addGestureRecognizer(tapGR)
-    }
-    
     func refreshUI() {
         DispatchQueue.main.async {
-            self.wolves.text = String(self.config.wereWolvesNum)
-            self.humen.text = String(self.config.villagersNum)
-            self.gods.text = String(self.config.godsNum)
+            self.numberLbl.text = String(self.config.gamerNum) + "人"
+            self.wolves.text = String(self.config.wereWolvesNum) + "人"
+            self.humen.text = String(self.config.villagersNum) + "人"
+            self.gods.text = String(self.config.godsNum) + "人"
         }
-    }
-    
-    func tapAction() {
-        numberInput.resignFirstResponder()
     }
     
     @IBAction func back() {
@@ -74,17 +61,12 @@ class ConfigGameViewController: UIViewController {
         gameVC.model = model
         self.navigationController?.pushViewController(gameVC, animated: true)
     }
-}
-
-extension ConfigGameViewController: UITextFieldDelegate {
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if let totalNum = Int(textField.text!) {
-            guard totalNum >= Min_Gamer_Num && totalNum <= Max_Gamer_Num else {
-                return
-            }
-            config.gamerNum = totalNum
-            refreshUI()
-        }
+    @IBAction func numberChanged(_ sender: UISlider) {
+        
+        config.gamerNum = Int(sender.value)
+        
+        refreshUI()
     }
+    
 }

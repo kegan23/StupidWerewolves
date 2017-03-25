@@ -23,7 +23,6 @@ enum CampType {
     case God        // 神民
     case Humen      // 平民
     case Wolf       // 狼人
-    
 }
 
 /**
@@ -32,34 +31,31 @@ enum CampType {
 class RoleModel: NSObject {
 
     var hasDead: Bool = false
+    var role: RoleType!
     
-}
-
-class God: RoleModel {
-    let camp: CampType = .God
-}
-
-class Human: RoleModel {
-    let camp: CampType = .Humen
-}
-
-class Wolf: RoleModel {
-    let camp: CampType = .Wolf
-    
-    // 刀
-    func kill() {
-        
+    required init(type: RoleType) {
+        role = type
     }
 }
 
 //MARK: - 神民
 // 女巫
-class Witch: God {
+class Witch: RoleModel {
     
-    let role: RoleType = .Witch
+//    let role: RoleType = .Witch
     
     var hasPotion: Bool = true  // 是否有救药
     var hasPoison: Bool = true  // 是否有毒药
+    
+    let camp: CampType = .God
+    
+    convenience init() {
+        self.init(type: .Witch)
+    }
+    
+    required init(type: RoleType) {
+        super.init(type: type)
+    }
     
     // 救
     func potion() {
@@ -73,11 +69,19 @@ class Witch: God {
 }
 
 // 猎人
-class Hunter: God {
-    
-    let role: RoleType = .Hunter
+class Hunter: RoleModel {
     
     var canShoot: Bool = true   // 是否能开枪
+    
+    let camp: CampType = .God
+    
+    convenience init() {
+        self.init(type: .Hunter)
+    }
+    
+    required init(type: RoleType) {
+        super.init(type: type)
+    }
     
     // 枪
     func shoot() {
@@ -86,18 +90,35 @@ class Hunter: God {
 }
 
 // 白痴
-class Idiot: God {
-    
-    let role: RoleType = .Idiot
+class Idiot: RoleModel {
     
     var skilled: Bool = false   // 是否翻牌（投票）
+    
+    let camp: CampType = .God
+    
+    convenience init() {
+        self.init(type: .Idiot)
+    }
+    
+    required init(type: RoleType) {
+        super.init(type: type)
+    }
+
 }
 
 // 预言家
-class Prophet: God {
+class Prophet: RoleModel {
     
-    let role: RoleType = .Prophet
+    let camp: CampType = .God
     
+    convenience init() {
+        self.init(type: .Prophet)
+    }
+    
+    required init(type: RoleType) {
+        super.init(type: type)
+    }
+
     // 验
     func check() {
         
@@ -105,13 +126,30 @@ class Prophet: God {
 }
 
 //MARK: - 平民
-class Villager: Human {
+class Villager: RoleModel {
     
-    let role: RoleType = .Villager
+    let camp: CampType = .Humen
+    
+    convenience init() {
+        self.init(type: .Villager)
+    }
+    
+    required init(type: RoleType) {
+        super.init(type: type)
+    }
+
 }
 
 //MARK: - 狼人
-class WereWolf: Wolf {
+class WereWolf: RoleModel {
     
-    let role: RoleType = .WereWolf
+    let camp: CampType = .Wolf
+    
+    convenience init() {
+        self.init(type: .WereWolf)
+    }
+    
+    required init(type: RoleType) {
+        super.init(type: type)
+    }
 }

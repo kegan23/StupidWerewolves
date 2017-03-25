@@ -19,11 +19,11 @@ class RoleManger: NSObject {
 
     static let sharedManager = RoleManger()
     private override init() {}
-    private var godArray: [God] = [Witch(), Prophet(), Hunter(), Idiot()]
+    private var godArray: [RoleModel] = [Witch(), Prophet(), Hunter(), Idiot()]
     
     
     // 获取神职数组
-    private func configGodArray(num: Int) -> [God] {
+    private func configGodArray(num: Int) -> [RoleModel] {
         if num < godArray.count {
             let tempGod = godArray[0..<num]
             return Array(tempGod)
@@ -31,12 +31,12 @@ class RoleManger: NSObject {
         return godArray
     }
     // 获取狼人数组
-    private func configWereWolfArray(num: Int) -> [Wolf] {
+    private func configWereWolfArray(num: Int) -> [RoleModel] {
         return Array.init(repeating: WereWolf(), count: num)
     }
     
     // 获取村民数组
-    private func configVillagerArray(num: Int) -> [Human] {
+    private func configVillagerArray(num: Int) -> [RoleModel] {
         return Array.init(repeating: Villager(), count: num)
     }
     
