@@ -8,13 +8,6 @@
 
 import UIKit
 
-protocol GameCardDelegate {
-    
-    func hideGameCard()
-//    func leftBtnClicked()
-//    func rightBtnClicked()
-}
-
 /**
  *  游戏信息卡片类，用于显示游戏信息
  */
@@ -29,11 +22,11 @@ protocol GameCardDelegate {
     
     var LeftBtnClickedCallback:(() -> Void)?    // 左边按钮点击事件回调
     var RightBtnClickedCallBack:(() -> Void)?   // 右边按钮点击事件回调
-    var HideGameCardHandler:(() -> Void)!     // 隐藏卡片的回调
+    var ShowGameCardHandler:(() -> Void)!       // 显示卡片的回调
+    var HideGameCardHandler:(() -> Void)!       // 隐藏卡片的回调
+    var GameCardCompletion:(() -> Void)!
     
     var canTapHidden: Bool!
-    
-    var delegate: GameCardDelegate!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,21 +56,20 @@ protocol GameCardDelegate {
     func hideCard(tapGr: UITapGestureRecognizer) {
         if canTapHidden! {
             HideGameCardHandler()
+            GameCardCompletion()
         }
     }
     
     // 点击左下按钮
     @IBAction func leftBtnClicked(sender: UIButton) {
-        if LeftBtnClickedCallback != nil {
-            LeftBtnClickedCallback!()
-        }
+        
+        LeftBtnClickedCallback?()
     }
     
     // 点击右下按钮
     @IBAction func rightBtnClicked(sender: UIButton) {
-        if RightBtnClickedCallBack != nil {
-            RightBtnClickedCallBack!()
-        }
+        
+        RightBtnClickedCallBack?()
     }
 }
 
@@ -92,14 +84,43 @@ extension GameCardView {
         config(title: "您的身份是：", detail: model.role.rawValue, btnHidden: true, canTap: true)
     }
     
-    // 设置杀人信息的方法
+    // 设置杀人信息的方法（狼人）
     func configKillingInfo(number: String, leftCompletion leftCallback: @escaping (() -> Void), rightCompletion rightCallback: @escaping (() -> Void)) {
         
         config(title: "狼人击杀的目标是：", detail: number + "号", btnHidden: false, canTap: false)
         
-        showLeftBtn(withTitle: "确定")
+        showLeftBtn(withTitle: "确定", enabled: true)
         LeftBtnClickedCallback = leftCallback
-        showRightBtn(withTitle: "换人")
+        showRightBtn(withTitle: "换人", enabled: true)
+        RightBtnClickedCallBack = rightCallback
+    }
+    
+    // 设置杀人信息的方法（女巫）
+    // 回调传空则表示空药
+    func configKilledInfo(number: String, leftCompletion leftCallback: (() -> Void)?, rightCompletion rightCallback: (() -> Void)?) {
+        
+        var canTap: Bool = false
+        if leftCallback == nil && rightCallback == nil {
+            canTap = true
+        }
+        
+        config(title: "今夜死亡的是：", detail: number + "号", btnHidden: false, canTap: canTap)
+        
+        showLeftBtn(withTitle: "救", enabled: leftCallback != nil)
+        LeftBtnClickedCallback = leftCallback
+        
+        showRightBtn(withTitle: "毒", enabled: rightCallback != nil)
+        RightBtnClickedCallBack = rightCallback
+    }
+    
+    // 设置毒杀信息的方法
+    func configPoisonInfo(number: String, leftCompletion leftCallback: @escaping (() -> Void), rightCompletion rightCallback: @escaping (() -> Void)) {
+        
+        config(title: "毒杀的目标是：", detail: number + "号", btnHidden: false, canTap: false)
+        
+        showLeftBtn(withTitle: "确定", enabled: true)
+        LeftBtnClickedCallback = leftCallback
+        showRightBtn(withTitle: "换人", enabled: true)
         RightBtnClickedCallBack = rightCallback
     }
 }
@@ -126,18 +147,32 @@ extension GameCardView {
     }
     
     // 显示左边的按钮
-    func showLeftBtn(withTitle title: String) {
+    func showLeftBtn(withTitle title: String, enabled: Bool) {
         weak var weakSelf = self
         DispatchQueue.main.async {
             weakSelf?.leftBtn.setTitle(title, for: .normal)
+            if enabled {
+                weakSelf?.leftBtn.setTitleColor(UIColor.black, for: .normal)
+                weakSelf?.leftBtn.isEnabled = true
+            } else {
+                weakSelf?.leftBtn.setTitleColor(UIColor.lightGray, for: .normal)
+                weakSelf?.leftBtn.isEnabled = false
+            }
         }
     }
     
     // 显示右边的按钮
-    func showRightBtn(withTitle title: String) {
+    func showRightBtn(withTitle title: String, enabled: Bool) {
         weak var weakSelf = self
         DispatchQueue.main.async {
             weakSelf?.rightBtn.setTitle(title, for: .normal)
+            if enabled {
+                weakSelf?.rightBtn.setTitleColor(UIColor.black, for: .normal)
+                weakSelf?.rightBtn.isEnabled = true
+            } else {
+                weakSelf?.rightBtn.setTitleColor(UIColor.lightGray, for: .normal)
+                weakSelf?.rightBtn.isEnabled = false
+            }
         }
     }
 }

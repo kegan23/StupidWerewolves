@@ -8,6 +8,8 @@
 
 import UIKit
 
+let gameOverInfo_goodWin = "好人阵营获胜"
+let gameOverInfo_wolfWin = "狼人阵营获胜"
 /**
  *  游戏管理类，用于处理游戏信息和游戏流程
  */
@@ -29,7 +31,7 @@ class GameManager: NSObject {
         
         if config.gameType == .Standard {
             // 标准局
-//            flows.append(GameFlow.init(flowType: .roleCheck, onlyFirstDay: true))
+            flows.append(GameFlow.init(flowType: .roleCheck, onlyFirstDay: true))
             flows.append(GameFlow.init(flowType: .werewolfKill, onlyFirstDay: false))
             flows.append(GameFlow.init(flowType: .witchCureOrPoison, onlyFirstDay: false))
             flows.append(GameFlow.init(flowType: .prophetCheck, onlyFirstDay: false))
@@ -80,24 +82,39 @@ class GameManager: NSObject {
         return currentFlow
     }
     
-    /**
-     *  @brief 处理信息
-     *
-     *  @param role 角色
-     */
-    func handler(role: RoleModel, index: IndexPath) {
-        
-        if currentFlow?.flowType == .roleCheck {
-            
-        } else if currentFlow?.flowType == .werewolfKill {
-            oneDay?.deadOne = index
-        }
-    }
     
+//    func handler(role: RoleModel, index: IndexPath) {
+//        
+//        if currentFlow?.flowType == .roleCheck {
+//            
+//        } else if currentFlow?.flowType == .werewolfKill {
+//            oneDay?.killedOne = index
+//        }
+//    }
+    
+    // 处理信息
     func handler(completion: ((_ oneDayModel: GameOneDayModel) -> GameOneDayModel?)) {
         
         if let model = completion(oneDay!) {
             oneDay = model
         }
+    }
+    
+    // 判断游戏是否结束
+    func judgeIfGameOver(callback: @escaping (_ hasOver: Bool, _ info: String) -> Void) {
+        //
+        if model.numConfig.wereWolvesNum == 0 {
+            callback(true, gameOverInfo_goodWin)
+        }
+        
+        if model.numConfig.godsNum == 0 || model.numConfig.villagersNum == 0 {
+            callback(true, gameOverInfo_wolfWin)
+        }
+        
+        if model.numConfig.godsNum + model.numConfig.villagersNum < model.numConfig.wereWolvesNum {
+            callback(true, gameOverInfo_wolfWin)
+        }
+        
+        callback(false, "")
     }
 }

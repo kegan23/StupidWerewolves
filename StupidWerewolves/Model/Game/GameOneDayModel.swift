@@ -10,9 +10,9 @@ import UIKit
 
 class GameOneDayModel: NSObject {
 
-    var deadOne: IndexPath?
+    var killedOne: IndexPath?
     var guardOne: IndexPath?
-    var inLove: IndexSet?
-    
+    var inLoveTwo: IndexSet?
+    var PoisonOne: IndexPath?
     
 }

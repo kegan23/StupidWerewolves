@@ -15,6 +15,7 @@
 		4B1352171E62A24B00CBAD00 /* StupidWerewolvesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1352161E62A24B00CBAD00 /* StupidWerewolvesUITests.swift */; };
 		4B1FC7541E8250B2002E3941 /* GameCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1FC7531E8250B2002E3941 /* GameCardCell.swift */; };
 		4B1FC7621E827830002E3941 /* GameFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1FC7611E827830002E3941 /* GameFlow.swift */; };
+		4B25A5F51E8902610037A198 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B25A5F41E8902610037A198 /* GameViewModel.swift */; };
 		4B518CF31E850C6C0015DF4C /* Role.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B518CF21E850C6B0015DF4C /* Role.plist */; };
 		4B518CF51E850E060015DF4C /* Flows.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B518CF41E850E060015DF4C /* Flows.plist */; };
 		4B5E28DD1E836B5200726783 /* GameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E28DC1E836B5200726783 /* GameCardView.swift */; };
@@ -63,6 +64,7 @@
 		4B1352181E62A24B00CBAD00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B1FC7531E8250B2002E3941 /* GameCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCardCell.swift; sourceTree = "<group>"; };
 		4B1FC7611E827830002E3941 /* GameFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameFlow.swift; sourceTree = "<group>"; };
+		4B25A5F41E8902610037A198 /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		4B518CF21E850C6B0015DF4C /* Role.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Role.plist; sourceTree = "<group>"; };
 		4B518CF41E850E060015DF4C /* Flows.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Flows.plist; sourceTree = "<group>"; };
 		4B5E28DC1E836B5200726783 /* GameCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCardView.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				4BB2E8B41E8217860050075E /* SpeakManager.swift */,
+				4B25A5F41E8902610037A198 /* GameViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				4B1FC7541E8250B2002E3941 /* GameCardCell.swift in Sources */,
 				4B800E0A1E7A7823007BF74C /* GameModel.swift in Sources */,
 				4B5E28DD1E836B5200726783 /* GameCardView.swift in Sources */,
+				4B25A5F51E8902610037A198 /* GameViewModel.swift in Sources */,
 				4B800E0C1E7A7823007BF74C /* RoleModel.swift in Sources */,
 				4B800E091E7A7823007BF74C /* GameManager.swift in Sources */,
 				4BD31D201E861BC9005F2D0F /* GameOneDayModel.swift in Sources */,
