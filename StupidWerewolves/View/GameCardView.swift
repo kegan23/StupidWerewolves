@@ -123,6 +123,24 @@ extension GameCardView {
         showRightBtn(withTitle: "换人", enabled: true)
         RightBtnClickedCallBack = rightCallback
     }
+    
+    // 设置验人信息的方法
+    func configCheckedInfo(model: RoleModel, number: String) {
+        
+        var detail = ""
+        if model.camp == CampType.Wolf {
+            detail = "狼人"
+        } else {
+            detail = "好人"
+        }
+        config(title: "\(number)号的身份是：", detail: detail, btnHidden: true, canTap: true)
+    }
+    
+    // 显示看枪信息的方法
+    func configCheckCanShootOrNot(canShoot: Bool) {
+        let detail = canShoot ? "能" : "不能"
+        config(title: "是否能枪：", detail: detail, btnHidden: true, canTap: true)
+    }
 }
 
 // 显示的通用方法

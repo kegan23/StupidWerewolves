@@ -8,6 +8,10 @@
 		<string>请查看身份</string>
 		<key>FlowDetail</key>
 		<string>请点击号码牌查看身份</string>
+		<key>FlowStartVoice</key>
+		<string>已发牌完毕，请点击号码牌查看身份</string>
+		<key>FlowEndVoice</key>
+		<string>即将进入天黑，请玩家闭眼</string>
 	</dict>
 	<key>guardSomebody</key>
 	<dict>
@@ -15,6 +19,10 @@
 		<string>守卫请守人</string>
 		<key>FlowDetail</key>
 		<string>守卫请点击守护的号码牌</string>
+		<key>FlowStartVoice</key>
+		<string>守卫请睁眼，守卫请选择你守护的人</string>
+		<key>FlowEndVoice</key>
+		<string>守卫请闭眼</string>
 	</dict>
 	<key>werewolfKill</key>
 	<dict>
@@ -22,6 +30,10 @@
 		<string>狼人请杀人</string>
 		<key>FlowDetail</key>
 		<string>狼人请点击刀的号码牌</string>
+		<key>FlowStartVoice</key>
+		<string>狼人请睁眼，狼人请选择击杀目标</string>
+		<key>FlowEndVoice</key>
+		<string>狼人请闭眼</string>
 	</dict>
 	<key>witchCureOrPoison</key>
 	<dict>
@@ -29,6 +41,10 @@
 		<string>女巫请用药</string>
 		<key>FlowDetail</key>
 		<string>女巫请点击自己的号码牌查看死亡情况</string>
+		<key>FlowStartVoice</key>
+		<string>女巫请睁眼，昨夜死亡的是他，是否使用解药，是否使用毒药</string>
+		<key>FlowEndVoice</key>
+		<string>女巫请闭眼</string>
 	</dict>
 	<key>prophetCheck</key>
 	<dict>
@@ -36,6 +52,10 @@
 		<string>预言家请验人</string>
 		<key>FlowDetail</key>
 		<string>预言家请点击要验的号码牌</string>
+		<key>FlowStartVoice</key>
+		<string>预言家请睁眼，预言家请验人</string>
+		<key>FlowEndVoice</key>
+		<string>预言家请闭眼</string>
 	</dict>
 	<key>hunterCanShootOrNot</key>
 	<dict>
@@ -43,6 +63,10 @@
 		<string>猎人请睁眼</string>
 		<key>FlowDetail</key>
 		<string>猎人请点击自己的号码牌查看是否能够使用技能</string>
+		<key>FlowStartVoice</key>
+		<string>猎人请睁眼</string>
+		<key>FlowEndVoice</key>
+		<string>猎人请闭眼</string>
 	</dict>
 	<key>sergeantCampaign</key>
 	<dict>
@@ -50,13 +74,21 @@
 		<string>警长竞选</string>
 		<key>FlowDetail</key>
 		<string>请竞选警长的玩家举手，发言结束后当选警长的玩家请点击自己的号码牌</string>
+		<key>FlowStartVoice</key>
+		<string>天亮了，现在开始警长竞选，想要竞选警长的玩家请举手</string>
+		<key>FlowEndVoice</key>
+		<string></string>
 	</dict>
 	<key>deadInfo</key>
 	<dict>
 		<key>FlowTitle</key>
 		<string>死亡讯息</string>
 		<key>FlowDetail</key>
-		<string>如死者有遗言则发表遗言，如警长死亡可点击他人号码牌移交警徽</string>
+		<string>如死者有遗言则发表遗言，发表完毕后点击自己号码牌结束发言阶段，如警长死亡可点击他人号码牌移交警徽，如需发动技能则可点击自己号码牌</string>
+		<key>FlowStartVoice</key>
+		<string></string>
+		<key>FlowEndVoice</key>
+		<string></string>
 	</dict>
 	<key>showTime</key>
 	<dict>
@@ -64,6 +96,10 @@
 		<string>发言环节</string>
 		<key>FlowDetail</key>
 		<string>玩家发言结束后请点击自己的号码牌，如狼人自爆请双击自己的号码牌，而后直接进入黑夜</string>
+		<key>FlowStartVoice</key>
+		<string>准备发言，从小号玩家开始发言语</string>
+		<key>FlowEndVoice</key>
+		<string>发言完毕，准备放逐投票</string>
 	</dict>
 	<key>voteTime</key>
 	<dict>
@@ -71,6 +107,21 @@
 		<string>公投环节</string>
 		<key>FlowDetail</key>
 		<string>请统计票数后点击出局玩家的号码牌，如平票进入平票PK</string>
+		<key>FlowStartVoice</key>
+		<string>即将开始投票，跟票视作弃票</string>
+		<key>FlowEndVoice</key>
+		<string>请出局的玩家发表遗言</string>
+	</dict>
+	<key>lastWordTime</key>
+	<dict>
+		<key>FlowTitle</key>
+		<string>遗言阶段</string>
+		<key>FlowDetail</key>
+		<string>请出局的玩家发表遗言，发表完毕后点击自己号码牌结束发言阶段，</string>
+		<key>FlowStartVoice</key>
+		<string></string>
+		<key>FlowEndVoice</key>
+		<string>即将进入天黑，请玩家闭眼</string>
 	</dict>
 </dict>
 </plist>

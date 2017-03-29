@@ -9,9 +9,10 @@
 import UIKit
 
 // flowInfo的key
-let flowTitleKey = "FlowTitle"      // 流程标题
-let flowDetailKey = "FlowDetail"    // 流程信息
-let flowVoiceKey = "FlowVoice"      // 流程语音
+let flowTitleKey = "FlowTitle"              // 流程标题
+let flowDetailKey = "FlowDetail"            // 流程信息
+let flowStartVoiceKey = "FlowStartVoice"    // 流程开始
+let flowEndVoiceKey = "FlowEndVoice"        // 流程结束
 
 /**
  *  枚举的rawValue为String类型, (流程题目/流程详细说明)

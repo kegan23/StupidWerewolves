@@ -36,9 +36,7 @@ class ConfigGameViewController: UIViewController {
     }
     
     func initData() {
-        config = GameConfig.init(type: GameType.Standard)
-        // 默认人数: 9
-        config.gamerNum = Default_Gamer_Num
+        config = GameConfig.init(type: GameType.Standard, totalNum: Default_Gamer_Num)
     }
     
     func refreshUI() {
@@ -64,7 +62,7 @@ class ConfigGameViewController: UIViewController {
     
     @IBAction func numberChanged(_ sender: UISlider) {
         
-        config.gamerNum = Int(sender.value)
+        config.set(totalNum: Int(sender.value))
         
         refreshUI()
     }

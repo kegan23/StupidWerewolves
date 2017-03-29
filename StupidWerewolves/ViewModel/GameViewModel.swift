@@ -53,7 +53,7 @@ extension GameViewModel {
     }
     
     // 显示死亡信息
-    func showKilledInfo(oneDayModel: GameOneDayModel, completion: @escaping (_ potion: Bool, _ poison: Bool, _ poisonedOne: NSIndexPath?) -> Void) {
+    func showKilledInfo(oneDayModel: GameOneDayModel, killedNum: String, completion: @escaping (_ potion: Bool, _ poison: Bool, _ poisonedOne: NSIndexPath?) -> Void) {
         
         if let witch = selectedRole as? Witch {
             
@@ -86,5 +86,21 @@ extension GameViewModel {
             completion(false)
         })
         gameCard.ShowGameCardHandler()
+    }
+    
+    // 显示验人信息
+    func showCheckedInfo(completion: @escaping (() -> Void)) {
+        
+        gameCard.configCheckedInfo(model: selectedRole!, number: selectedNumber!)
+        gameCard.ShowGameCardHandler()
+        gameCard.GameCardCompletion = completion
+    }
+    
+    // 显示能否枪
+    func showWhetherCanShoot(canShoot: Bool, completion: @escaping (() -> Void)) {
+        
+        gameCard.configCheckCanShootOrNot(canShoot: canShoot)
+        gameCard.ShowGameCardHandler()
+        gameCard.GameCardCompletion = completion
     }
 }

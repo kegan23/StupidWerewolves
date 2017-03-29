@@ -32,8 +32,10 @@ class RoleModel: NSObject {
 
     var hasDead: Bool = false
     var role: RoleType!
+    var camp: CampType!
+    var isSergeant: Bool = false
     
-    required init(type: RoleType) {
+    required init(type: RoleType, camp: CampType) {
         role = type
     }
 }
@@ -47,14 +49,14 @@ class Witch: RoleModel {
     var hasPotion: Bool = true  // 是否有救药
     var hasPoison: Bool = true  // 是否有毒药
     
-    let camp: CampType = .God
+//    let camp: CampType = .God
     
     convenience init() {
-        self.init(type: .Witch)
+        self.init(type: .Witch, camp: .God)
     }
     
-    required init(type: RoleType) {
-        super.init(type: type)
+    required init(type: RoleType, camp: CampType) {
+        super.init(type: type, camp: camp)
     }
     
     // 救
@@ -73,14 +75,12 @@ class Hunter: RoleModel {
     
     var canShoot: Bool = true   // 是否能开枪
     
-    let camp: CampType = .God
-    
     convenience init() {
-        self.init(type: .Hunter)
+        self.init(type: .Hunter, camp: .God)
     }
     
-    required init(type: RoleType) {
-        super.init(type: type)
+    required init(type: RoleType, camp: CampType) {
+        super.init(type: type, camp: camp)
     }
     
     // 枪
@@ -94,14 +94,12 @@ class Idiot: RoleModel {
     
     var skilled: Bool = false   // 是否翻牌（投票）
     
-    let camp: CampType = .God
-    
     convenience init() {
-        self.init(type: .Idiot)
+        self.init(type: .Idiot, camp: .God)
     }
     
-    required init(type: RoleType) {
-        super.init(type: type)
+    required init(type: RoleType, camp: CampType) {
+        super.init(type: type, camp: camp)
     }
 
 }
@@ -109,14 +107,12 @@ class Idiot: RoleModel {
 // 预言家
 class Prophet: RoleModel {
     
-    let camp: CampType = .God
-    
     convenience init() {
-        self.init(type: .Prophet)
+        self.init(type: .Prophet, camp: .God)
     }
     
-    required init(type: RoleType) {
-        super.init(type: type)
+    required init(type: RoleType, camp: CampType) {
+        super.init(type: type, camp: camp)
     }
 
     // 验
@@ -128,28 +124,23 @@ class Prophet: RoleModel {
 //MARK: - 平民
 class Villager: RoleModel {
     
-    let camp: CampType = .Humen
-    
     convenience init() {
-        self.init(type: .Villager)
+        self.init(type: .Villager, camp: .Humen)
     }
     
-    required init(type: RoleType) {
-        super.init(type: type)
+    required init(type: RoleType, camp: CampType) {
+        super.init(type: type, camp: camp)
     }
-
 }
 
 //MARK: - 狼人
 class WereWolf: RoleModel {
     
-    let camp: CampType = .Wolf
-    
     convenience init() {
-        self.init(type: .WereWolf)
+        self.init(type: .WereWolf, camp: .Wolf)
     }
     
-    required init(type: RoleType) {
-        super.init(type: type)
+    required init(type: RoleType, camp: CampType) {
+        super.init(type: type, camp: camp)
     }
 }

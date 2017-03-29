@@ -18,6 +18,8 @@ class GameModel: NSObject {
     let numConfig: GameConfig!      // 游戏设置
     var flows: Array<GameFlow>!     // 游戏流程
     
+    var sergeant: IndexPath?        // 警长
+    
     required init(config: GameConfig) {
         
         roles = RoleManger.sharedManager.configRoleArray(config: config)

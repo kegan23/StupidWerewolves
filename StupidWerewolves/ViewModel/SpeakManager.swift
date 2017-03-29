@@ -9,9 +9,11 @@
 import UIKit
 import AVFoundation
 
-class SpeakManager: NSObject {
+private let RATE: Float = 0.4
 
-    class func speak(_ speakText: String) {
+class SpeakManager: NSObject {
+    
+    class func speak(_ speakText: String, completion: (() -> Void)?) {
         
         let av = AVSpeechSynthesizer.init()
         //设置语言类别（不能识别，返回nil）
@@ -19,11 +21,18 @@ class SpeakManager: NSObject {
         //需要转换的文本
         let utterance = AVSpeechUtterance.init(string: speakText)
         //设置语速快慢
-        utterance.rate = 0.4
+        utterance.rate = RATE
         utterance.voice = voiceType;
         utterance.volume = 1
         //语音合成器会生成音频
         av.speak(utterance)
+        
+        let time: TimeInterval = TimeInterval(RATE * Float(speakText.characters.count))
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
+            //code
+            completion?()
+        }
     }
     
     /*

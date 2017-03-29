@@ -13,6 +13,6 @@ class GameOneDayModel: NSObject {
     var killedOne: IndexPath?
     var guardOne: IndexPath?
     var inLoveTwo: IndexSet?
-    var PoisonOne: IndexPath?
+    var poisonOne: IndexPath?
     
 }

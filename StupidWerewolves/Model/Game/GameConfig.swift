@@ -21,26 +21,31 @@ class GameConfig: NSObject {
     // 游戏类型
     var gameType: GameType!
     // 总人数
-    var gamerNum: Int = 0 {
-        didSet {
-            if gameType == .Standard {
-                // 标准局
-                wereWolvesNum = gamerNum / 3
-                godsNum = wereWolvesNum
-                villagersNum = gamerNum - godsNum - wereWolvesNum
-            }
-        }
-    }
+    var gamerNum: Int
     
-    var wereWolvesNum: Int!     // 狼人人数
-    var godsNum: Int!           // 神职人数
-    var villagersNum: Int!      // 村民人数
+    var wereWolvesNum: Int     // 狼人人数
+    var godsNum: Int           // 神职人数
+    var villagersNum: Int      // 村民人数
 //    var othersNum: Int!         // 第三方人数
     
-    required init(type: GameType) {
+    required init(type: GameType, totalNum: Int) {
         
         gameType = type
-//        gamerNum = totalNum
+        gamerNum = totalNum
+        
+        wereWolvesNum = gamerNum / 3
+        godsNum = wereWolvesNum
+        villagersNum = gamerNum - godsNum - wereWolvesNum
+    }
+    
+    func set(totalNum num: Int) {
+        if gameType == .Standard {
+            // 标准局
+            gamerNum = num
+            wereWolvesNum = gamerNum / 3
+            godsNum = wereWolvesNum
+            villagersNum = gamerNum - godsNum - wereWolvesNum
+        }
     }
     
 }
