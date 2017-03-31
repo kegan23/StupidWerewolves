@@ -35,8 +35,11 @@ class RoleModel: NSObject {
     var camp: CampType!
     var isSergeant: Bool = false
     
+    var numberCard: String?
+    
     required init(type: RoleType, camp: CampType) {
         role = type
+        self.camp = camp
     }
 }
 

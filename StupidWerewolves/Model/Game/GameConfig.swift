@@ -23,10 +23,12 @@ class GameConfig: NSObject {
     // 总人数
     var gamerNum: Int
     
-    var wereWolvesNum: Int     // 狼人人数
-    var godsNum: Int           // 神职人数
-    var villagersNum: Int      // 村民人数
+    var wereWolvesNum: Int      // 狼人人数
+    var godsNum: Int            // 神职人数
+    var villagersNum: Int       // 村民人数
 //    var othersNum: Int!         // 第三方人数
+    
+    var deadNum: Int            // 死亡人数
     
     required init(type: GameType, totalNum: Int) {
         
@@ -36,6 +38,7 @@ class GameConfig: NSObject {
         wereWolvesNum = gamerNum / 3
         godsNum = wereWolvesNum
         villagersNum = gamerNum - godsNum - wereWolvesNum
+        deadNum = 0
     }
     
     func set(totalNum num: Int) {

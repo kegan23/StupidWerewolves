@@ -17,18 +17,41 @@ class GameViewModel: NSObject {
     
     var selectedIndex: IndexPath?   // 当前点击的IndexPath
     var selectedRole: RoleModel?    // 点击的role
-    var selectedNumber: String?     // 点击的号码牌
     
     var needSelectedMore: Bool = false  // 是否需要二次操作
+    
+    /* 多次点击 */
+    var numOfTap: Int = 0 {             // 记录多次点击
+        didSet {
+            if numOfTap == multipleSelect {
+                TapBlock?()
+                TapBlock = nil
+                multipleSelect = 0
+            }
+        }
+    }
+    private var multipleSelect: Int = 0 // 点击次数设定
+    private var TapBlock: (() -> Void)? // 达到点击数后回调
     
     required init(gameCard: GameCardView) {
         self.gameCard = gameCard
     }
     
-    func config(index: IndexPath, role: RoleModel, number: String) {
+    func config(index: IndexPath, role: RoleModel) {
         self.selectedIndex = index
         self.selectedRole = role
-        self.selectedNumber = number
+    }
+    
+    // 需要点击多个cell触发事件
+    func multipleSelect(selectNum num: Int, completion:@escaping () -> Void) {
+        multipleSelect = num
+        numOfTap = 0
+        TapBlock = completion
+    }
+    
+    // 增加点击计数
+    func addTapNum() {
+        numOfTap += 1
     }
 }
 
@@ -44,7 +67,7 @@ extension GameViewModel {
     // 显示刀的信息
     func showKillingInfo(completion: @escaping ((_ hasKilled: Bool) -> Void)) {
         
-        gameCard.configKillingInfo(number: selectedNumber!, leftCompletion: {
+        gameCard.configKillingInfo(number: (selectedRole?.numberCard)!, leftCompletion: {
             completion(true)
         }, rightCompletion: {
             completion(false)
@@ -57,7 +80,6 @@ extension GameViewModel {
         
         if let witch = selectedRole as? Witch {
             
-            weak var weakSelf = self
             var leftCallback: (() -> Void)? = nil
             if witch.hasPotion && oneDayModel.killedOne != selectedIndex {
                 leftCallback = { () in
@@ -72,7 +94,7 @@ extension GameViewModel {
                 }
             }
             
-            gameCard.configKilledInfo(number: selectedNumber!, leftCompletion: leftCallback, rightCompletion: rightCallback)
+            gameCard.configKilledInfo(number: killedNum, leftCompletion: leftCallback, rightCompletion: rightCallback)
             gameCard.ShowGameCardHandler()
         }
     }
@@ -80,7 +102,7 @@ extension GameViewModel {
     // 显示毒杀信息
     func showPoisonInfo(completion: @escaping ((_ hasPoison: Bool) -> Void)) {
         
-        gameCard.configPoisonInfo(number: selectedNumber!, leftCompletion: {
+        gameCard.configPoisonInfo(number: (selectedRole?.numberCard)!, leftCompletion: {
             completion(true)
         }, rightCompletion: {
             completion(false)
@@ -91,7 +113,7 @@ extension GameViewModel {
     // 显示验人信息
     func showCheckedInfo(completion: @escaping (() -> Void)) {
         
-        gameCard.configCheckedInfo(model: selectedRole!, number: selectedNumber!)
+        gameCard.configCheckedInfo(model: selectedRole!)
         gameCard.ShowGameCardHandler()
         gameCard.GameCardCompletion = completion
     }
@@ -103,4 +125,5 @@ extension GameViewModel {
         gameCard.ShowGameCardHandler()
         gameCard.GameCardCompletion = completion
     }
+    
 }

@@ -6,17 +6,113 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StupidWerewolves/ViewController/GameViewController.swift"
-            timestampString = "512416130.0645"
+            timestampString = "512642269.667571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "startGame(completion:)"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
+            landmarkName = "deadInfo()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StupidWerewolves/Model/Game/GameManager.swift"
+            timestampString = "512642315.871556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "configDeadInfo(deadRoles:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StupidWerewolves.GameManager.configDeadInfo (deadRoles : Swift.Array&lt;StupidWerewolves.RoleModel&gt;, completion : Swift.Optional&lt;() -&gt; ()&gt;) -&gt; Swift.String"
+                  moduleName = "StupidWerewolves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuxin/Desktop/Try/StupidWerewolves/StupidWerewolves/Model/Game/GameManager.swift"
+                  timestampString = "512642683.412974"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "275"
+                  endingLineNumber = "275"
+                  offsetFromSymbolStart = "4740">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StupidWerewolves.GameManager.(configDeadInfo (deadRoles : Swift.Array&lt;StupidWerewolves.RoleModel&gt;, completion : Swift.Optional&lt;() -&gt; ()&gt;) -&gt; Swift.String).(closure #1)"
+                  moduleName = "StupidWerewolves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuxin/Desktop/Try/StupidWerewolves/StupidWerewolves/Model/Game/GameManager.swift"
+                  timestampString = "512642683.414987"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "276"
+                  endingLineNumber = "276"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StupidWerewolves/Model/Game/GameManager.swift"
+            timestampString = "512642800.050204"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "flowStart(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StupidWerewolves.GameManager.flowStart (completion : Swift.Optional&lt;(Swift.Optional&lt;StupidWerewolves.GameFlow&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "StupidWerewolves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuxin/Desktop/Try/StupidWerewolves/StupidWerewolves/Model/Game/GameManager.swift"
+                  timestampString = "512642800.275687"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "420">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StupidWerewolves.GameManager.(flowStart (completion : Swift.Optional&lt;(Swift.Optional&lt;StupidWerewolves.GameFlow&gt;) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "StupidWerewolves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuxin/Desktop/Try/StupidWerewolves/StupidWerewolves/Model/Game/GameManager.swift"
+                  timestampString = "512642800.280838"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

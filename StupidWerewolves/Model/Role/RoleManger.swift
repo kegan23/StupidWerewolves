@@ -19,7 +19,7 @@ class RoleManger: NSObject {
 
     static let sharedManager = RoleManger()
     private override init() {}
-    private var godArray: [RoleModel] = [Witch(), Prophet(), Hunter(), Idiot()]
+    private var godArray: [RoleModel] = [Witch.init(), Prophet.init(), Hunter.init(), Idiot.init()]
     
     
     // 获取神职数组
@@ -32,12 +32,21 @@ class RoleManger: NSObject {
     }
     // 获取狼人数组
     private func configWereWolfArray(num: Int) -> [RoleModel] {
-        return Array.init(repeating: WereWolf(), count: num)
+        var wolves:[RoleModel] = []
+        for _ in 0..<num {
+            wolves.append(WereWolf.init())
+        }
+        return wolves
     }
     
     // 获取村民数组
     private func configVillagerArray(num: Int) -> [RoleModel] {
-        return Array.init(repeating: Villager(), count: num)
+        
+        var villagers:[RoleModel] = []
+        for _ in 0..<num {
+            villagers.append(Villager.init())
+        }
+        return villagers
     }
     
     // 暂时这么写, 写得好low

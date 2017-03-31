@@ -18,7 +18,7 @@ class GameManager: NSObject {
     // 游戏模型
     var model: GameModel!
     // 游戏一天数据
-    var oneDay: GameOneDayModel? {
+    var oneDay: GameOneDayModel = GameOneDayModel() {
         didSet {
             
         }
@@ -29,7 +29,6 @@ class GameManager: NSObject {
     
     required init(model: GameModel) {
         self.model = model
-        self.oneDay = GameOneDayModel()
     }
     
     class func configGameFlow(config: GameConfig) -> Array<GameFlow>? {
@@ -38,15 +37,17 @@ class GameManager: NSObject {
         
         if config.gameType == .Standard {
             // 标准局
-            flows.append(GameFlow.init(flowType: .roleCheck, onlyFirstDay: true))
-            flows.append(GameFlow.init(flowType: .werewolfKill, onlyFirstDay: false))
-            flows.append(GameFlow.init(flowType: .witchCureOrPoison, onlyFirstDay: false))
-            flows.append(GameFlow.init(flowType: .prophetCheck, onlyFirstDay: false))
-            flows.append(GameFlow.init(flowType: .hunterCanShootOrNot, onlyFirstDay: false))
-            flows.append(GameFlow.init(flowType: .sergeantCampaign, onlyFirstDay: true))
-            flows.append(GameFlow.init(flowType: .deadInfo, onlyFirstDay: false))
-            flows.append(GameFlow.init(flowType: .showTime, onlyFirstDay: false))
-            flows.append(GameFlow.init(flowType: .voteTime, onlyFirstDay: false))
+//            flows.append(GameFlow.init(flowType: .roleCheck, onlyOnce: true))
+            flows.append(GameFlow.init(flowType: .werewolfKill, onlyOnce: false))
+            flows.append(GameFlow.init(flowType: .witchCureOrPoison, onlyOnce: false))
+            flows.append(GameFlow.init(flowType: .prophetCheck, onlyOnce: false))
+            flows.append(GameFlow.init(flowType: .hunterCanShootOrNot, onlyOnce: false))
+            flows.append(GameFlow.init(flowType: .sergeantCampaign, onlyOnce: true))
+            flows.append(GameFlow.init(flowType: .lastWordTime, onlyOnce: true))
+            flows.append(GameFlow.init(flowType: .deadInfo, onlyOnce: false))
+            flows.append(GameFlow.init(flowType: .showTime, onlyOnce: false))
+            flows.append(GameFlow.init(flowType: .voteTime, onlyOnce: false))
+            flows.append(GameFlow.init(flowType: .lastWordTime, onlyOnce: false))
         }
         return flows
     }
@@ -56,37 +57,49 @@ class GameManager: NSObject {
      *
      *  @return 流程名
      */
-    func flowStart() -> Dictionary <String, Any>? {
+    func flowStart(completion:((_ flow: GameFlow?) -> Void)?) {
         if model.flows.count > 0 {
             
-            if let flow = model.flows.first {
-                
-                currentFlow = flow
-//                if flow.flowType == GameFlowType.guardSomebody {
-//                } else if flow.flowType == GameFlowType.werewolfKill {
-//                    
-//                } else if flow.flowType == GameFlowType.witchCureOrPoison {
-//                    
-//                } else if flow.flowType == GameFlowType.prophetCheck {
-//                    
-//                } else if flow.flowType == GameFlowType.hunterCanShootOrNot {
-//                    
-//                }
-                model.flows.removeFirst()
-                if !flow.onlyFirstDay {
-                    model.flows.append(flow)
+            judgeIfGameOver { [weak self] (hasOver, info) in
+                if hasOver {
+                    
+                    
+                } else {
+                    var voiceText = ""
+                    if self?.currentFlow != nil {
+                        voiceText = (self?.currentFlow?.flowInfo[flowEndVoiceKey])!
+                    }
+                    
+                    if let flow = self?.model.flows.first {
+                        self?.currentFlow = flow
+                        //                if flow.flowType == GameFlowType.guardSomebody {
+                        //                } else if flow.flowType == GameFlowType.werewolfKill {
+                        //
+                        //                } else if flow.flowType == GameFlowType.witchCureOrPoison {
+                        //
+                        //                } else if flow.flowType == GameFlowType.prophetCheck {
+                        //
+                        //                } else if flow.flowType == GameFlowType.hunterCanShootOrNot {
+                        //
+                        //                }
+                        self?.model.flows.removeFirst()
+                        if !flow.onlyOnce {
+                            self?.model.flows.append(flow)
+                        }
+                        completion?(flow)
+                        voiceText += ("。" + flow.flowInfo[flowStartVoiceKey]!)
+                        SpeakManager.speak(voiceText, completion: nil)
+                    }
                 }
-                return flow.flowInfo
             }
         }
-        return nil
     }
     
     
     /**
      *  @brief 流程结束
      *
-     *  @param completion 结束成功的毁掉
+     *  @param completion 结束成功的回调
      */
     func flowEnd(completion: @escaping (() -> Void)) {
         
@@ -124,26 +137,31 @@ class GameManager: NSObject {
 //    }
     
     // 处理信息
-    func handler(completion: ((_ oneDayModel: GameOneDayModel) -> GameOneDayModel?)) {
-        
-        if let model = completion(oneDay!) {
-            oneDay = model
-        }
-    }
+//    func handler(completion: ((_ oneDayModel: GameOneDayModel) -> GameOneDayModel?)) {
+//        
+//        if let model = completion(oneDay!) {
+//            oneDay = model
+//        }
+//    }
     
     /**
      *  @brief 计算减员
      *
      *  @param role 减员角色
      */
-    func reduce(roleModel role: RoleModel) {
+    func reduce(index: IndexPath) {
         
-        if role.camp == CampType.God {
-            model.numConfig.godsNum -= 1
-        } else if role.camp == CampType.Humen {
-            model.numConfig.villagersNum -= 1
-        } else {
-            model.numConfig.wereWolvesNum -= 1
+        if let role = roleModel(index: index) {
+            
+            role.hasDead = true
+            
+            if role.camp == CampType.God {
+                model.numConfig.godsNum -= 1
+            } else if role.camp == CampType.Humen {
+                model.numConfig.villagersNum -= 1
+            } else {
+                model.numConfig.wereWolvesNum -= 1
+            }
         }
     }
     
@@ -159,7 +177,7 @@ class GameManager: NSObject {
             callback(true, gameOverInfo_wolfWin)
         }
         
-        if model.numConfig.godsNum + model.numConfig.villagersNum < model.numConfig.wereWolvesNum {
+        if model.numConfig.godsNum + model.numConfig.villagersNum <= model.numConfig.wereWolvesNum {
             callback(true, gameOverInfo_wolfWin)
         }
         
@@ -167,30 +185,33 @@ class GameManager: NSObject {
     }
 }
 
-// MARK: - 功能部分
+// MARK: 功能部分
 extension GameManager {
     
     // 女巫救人
     func witchPotioned() {
         
-        let role = roleModel(index: (oneDay?.killedOne)!)
+        if let role = roleModel(index: oneDay.killedOne!) {
         
-        if role?.camp == CampType.God {
-            model.numConfig.godsNum += 1
-        } else if role?.camp == CampType.Humen {
-            model.numConfig.villagersNum += 1
-        } else {
-            model.numConfig.wereWolvesNum += 1
+            role.hasDead = false
+            
+            if role.camp == CampType.God {
+                model.numConfig.godsNum += 1
+            } else if role.camp == CampType.Humen {
+                model.numConfig.villagersNum += 1
+            } else {
+                model.numConfig.wereWolvesNum += 1
+            }
+            
+            oneDay.killedOne = nil
         }
-        
-        oneDay?.killedOne = nil
     }
     
     // 猎人能否开枪
     func ifHunterCanShoot(hunterIndex: IndexPath) -> Bool {
         let hunter = roleModel(index: hunterIndex) as! Hunter
         
-        if oneDay?.poisonOne == hunterIndex {
+        if oneDay.poisonOne == hunterIndex {
             hunter.canShoot = false
         }
         return hunter.canShoot
@@ -203,55 +224,86 @@ extension GameManager {
     }
     
     // 显示死亡信息
-    func showDeadInfo(deadNumbers nums: [String], completion: @escaping ((_ speacialRole: RoleModel?) -> Void)) {
+    func configDeadInfo(deadRoles roles: [RoleModel], completion: (() -> Void)?) -> String {
         
-        let randomSeed = Int(arc4random() % 2)
+        var deadInfo: String = ""
         
-        var returnStr: String
-        if nums.count == 0 {
+        if roles.count == 0 {
             
-            let exInfo = randomOne(arr: ["左", "右"]) as! String
+            if model.sergeant != nil {
+                let exInfo = randomOne(arr: ["左", "右"]) as! String
+                deadInfo = "昨夜平安夜，从警\(exInfo)玩家开始发言"
+            } else {
+                let exInfo = randomOne(arr: ["小", "大"]) as! String
+                deadInfo = "昨夜平安夜，从\(exInfo)号玩家开始发言"
+            }
             
-            returnStr = "昨夜平安夜，从警\(exInfo)玩家开始发言"
-            SpeakManager.speak(returnStr, completion: {
-                completion(nil)
-            })
+            skipFlow()
+            
         } else {
             
             var deadInfo: String = ""
-            if randomSeed == 0 {
-                for num in nums {
-                    deadInfo += num
-                }
-            } else {
-                for num in nums.reversed() {
-                    deadInfo += num
+            
+            let reversedRoles = Array.init(arrayLiteral: roles.reversed())
+            let tempRoles = randomOne(arr: [roles, reversedRoles]) as! [RoleModel]
+            
+            for role in tempRoles {
+                if role.numberCard != nil {
+                    deadInfo += role.numberCard!
                 }
             }
             
             var sergeantDead = false
-            if model.sergeant == oneDay?.killedOne || model.sergeant == oneDay?.poisonOne {
+            if model.sergeant == oneDay.killedOne || model.sergeant == oneDay.poisonOne {
                 sergeantDead = true
             }
             
-            let killedOne = roleModel(index: (oneDay?.killedOne)!)
-            if killedOne?.role == RoleType.Hunter {
-                
+            var lastWord = ""
+            if model.hasLastWords {
+                model.hasLastWords = false
+                lastWord = "请死者发表遗言"
             }
             if sergeantDead {
-                let exInfo = randomOne(arr: ["小", "大"]) as! String
-                returnStr = "昨夜死亡的是\(deadInfo)，从\(exInfo)号玩家开始发言"
-                SpeakManager.speak(returnStr, completion: {
-                    completion(nil)
-                })
+                deadInfo = "昨夜死亡的是\(deadInfo)，\(lastWord)并移交警徽"
+                // 增加移交流程
+                insertFlow(GameFlow.transferSergeant())
             } else {
-                let exInfo = randomOne(arr: ["左", "右"]) as! String
-                returnStr = "昨夜死亡的是\(deadInfo)，从警\(exInfo)玩家开始发言"
-                SpeakManager.speak(returnStr, completion: {
-                    completion(nil)
-                })
+                deadInfo = "昨夜死亡的是\(deadInfo)，\(lastWord)"
             }
         }
+        
+        SpeakManager.speak(deadInfo, completion: {
+            completion?()
+        })
+        return deadInfo
+    }
+    
+    // 随机一个发言顺序
+    func randomVoteOrder(completion: (() -> Void)?) {
+        var speak = ""
+        if model.sergeant == nil {
+            let exInfo = randomOne(arr: ["小", "大"]) as! String
+            speak = "从\(exInfo)号玩家开始发言"
+        } else {
+            let exInfo = randomOne(arr: ["左", "右"]) as! String
+            speak = "从警\(exInfo)玩家开始发言"
+        }
+        
+        SpeakManager.speak(speak, completion: completion)
+    }
+}
+
+
+
+
+// MARK: 辅助工具
+extension GameManager {
+    
+    // 随机获取一个数据
+    func randomOne(arr: Array<Any>) -> Any {
+        
+        let randomSeed = Int(arc4random() % UInt32(arr.count))
+        return arr[randomSeed]
     }
     
     // 获取角色信息
@@ -262,12 +314,29 @@ extension GameManager {
         }
         return nil
     }
-}
-
-extension GameManager {
-    func randomOne(arr: Array<Any>) -> Any {
+    
+    // 插入流程
+    func insertFlow(_ flow: GameFlow) {
+        model.flows.insert(flow, at: 1)
+    }
+    
+    // 跳过下一流程
+    func skipFlow() {
+        flowStart(completion: nil)
+    }
+    
+    // 获取死亡时能发动技能的角色
+    func specialRoles(inDeadedRoles roles: [RoleModel]) -> [RoleModel] {
         
-        let randomSeed = Int(arc4random() % UInt32(arr.count))
-        return arr[randomSeed]
+        var speacialRoles: [RoleModel] = []
+        if roles.count > 0 {
+            for roleModel in roles {
+                // 可枪猎人
+                if let hunter = roleModel as? Hunter, hunter.canShoot == true {
+                    speacialRoles.append(roleModel)
+                }
+            }
+        }
+        return speacialRoles
     }
 }

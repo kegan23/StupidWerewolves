@@ -14,15 +14,21 @@ import UIKit
  */
 class GameModel: NSObject {
     
-    let roles: Array<RoleModel>!    // 身份数组
+    var roles: Array<RoleModel>!    // 身份数组
     let numConfig: GameConfig!      // 游戏设置
     var flows: Array<GameFlow>!     // 游戏流程
     
     var sergeant: IndexPath?        // 警长
+    var hasLastWords: Bool = true   // 是否有遗言
     
     required init(config: GameConfig) {
         
         roles = RoleManger.sharedManager.configRoleArray(config: config)
+        for (i, role) in roles.enumerated() {
+            role.numberCard = "\(i + 1)"
+            print("\(role.numberCard)号：\(role.role.rawValue)")
+        }
+        
         numConfig = config
         flows = GameManager.configGameFlow(config: config)
     }

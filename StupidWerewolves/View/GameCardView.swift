@@ -125,15 +125,15 @@ extension GameCardView {
     }
     
     // 设置验人信息的方法
-    func configCheckedInfo(model: RoleModel, number: String) {
+    func configCheckedInfo(model: RoleModel) {
         
-        var detail = ""
+        var detail: String
         if model.camp == CampType.Wolf {
             detail = "狼人"
         } else {
             detail = "好人"
         }
-        config(title: "\(number)号的身份是：", detail: detail, btnHidden: true, canTap: true)
+        config(title: "\(model.numberCard!)号的身份是：", detail: detail, btnHidden: true, canTap: true)
     }
     
     // 显示看枪信息的方法

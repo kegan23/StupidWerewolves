@@ -16,7 +16,7 @@ private let cell_height: CGFloat = 146.5
  */
 class GameViewController: UIViewController {
 
-    var model: GameModel!
+//    var model: GameModel!
     var manager: GameManager!
     var viewModel: GameViewModel!
     
@@ -25,9 +25,7 @@ class GameViewController: UIViewController {
     @IBOutlet var gameInfoTV: UITextView!           // 游戏提示
     @IBOutlet var gameCard: GameCardView!           // 信息卡
     
-    var numberArr: [String]!                        // 显示的号码牌
-    
-    var checkNum: Int = 0                           // 有多少人查看了号码牌
+    var numOfTap: Int = 0                           // 记录多次点击
     var hasCheckedCells: [GameCardCell]! = []       // 查看了号码牌的cell
     
     
@@ -39,7 +37,6 @@ class GameViewController: UIViewController {
     }
 
     func initdata() {
-        manager = GameManager.init(model: model)
         
         weak var weakSelf = self
         gameCard.HideGameCardHandler = {
@@ -50,12 +47,10 @@ class GameViewController: UIViewController {
         }
         
         viewModel = GameViewModel.init(gameCard: gameCard)
-        
-        var tempNumArr: [String] = []
-        for i in 1...model.numConfig.gamerNum {
-            tempNumArr.append("\(i)")
-        }
-        numberArr = tempNumArr
+    }
+    
+    func initManager(withGameModel model: GameModel) {        
+        manager = GameManager.init(model: model)
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,15 +73,19 @@ class GameViewController: UIViewController {
     // 开始一个游戏流程
     func startGame(completion: (() -> Void)?) {
         
-        manager.flowEnd { [weak self] in
-            if let flowDict = self?.manager.flowStart() {
-                SpeakManager.speak(flowDict[flowStartVoiceKey] as! String, completion: completion)
-                DispatchQueue.main.async(execute: {
-                    self?.gameTitle.text = flowDict[flowTitleKey] as? String
-                    self?.gameInfoTV.text = flowDict[flowDetailKey] as! String
-                })
+        manager.flowStart(completion: { [weak self] (flow) in
+            
+            DispatchQueue.main.async(execute: {
+                self?.gameTitle.text = flow?.flowInfo[flowTitleKey]
+                //                        flow.flowInfo[flowTitleKey] as? String
+                self?.gameInfoTV.text = flow?.flowInfo[flowDetailKey]
+            })
+            completion?()
+            
+            if flow?.flowType == .deadInfo {
+                self?.deadInfo()
             }
-        }
+        })
     }
     
 }
@@ -94,13 +93,16 @@ class GameViewController: UIViewController {
 extension GameViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberArr.count
+        return manager.model.roles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCardCell", for: indexPath) as! GameCardCell
-        cell.cardLbl.text = numberCard(index: indexPath)
+        
+        if let role = manager.roleModel(index: indexPath) {
+            cell.cardLbl.text = role.numberCard
+        }
         return cell
     }
     
@@ -125,21 +127,11 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
 //        }
     }
     
-    
-    
-    // 获取号码牌
-    func numberCard(index: IndexPath) -> String? {
-        if index.row < numberArr.count {
-            return numberArr[index.row]
-        }
-        return nil
-    }
-    
     // 设置ViewModel
     func setViewModelWithIndex(_ index: IndexPath) {
-        let role = manager.roleModel(index: index)
-        let number = numberCard(index: index)
-        viewModel.config(index: index, role: role!, number: number!)
+        if let role = manager.roleModel(index: index) {
+            viewModel.config(index: index, role: role)
+        }
     }
 }
 
@@ -171,7 +163,10 @@ extension GameViewController {
             sergeantCampaign()
         } else if flow.flowType == GameFlowType.deadInfo {
             // 死亡讯息
-            deadInfo()
+
+        } else if flow.flowType == GameFlowType.lastWordTime {
+            // 遗言环节
+            lastWordTime()
         } else if flow.flowType == GameFlowType.showTime {
             // 发言环节
             showTime()
@@ -189,16 +184,16 @@ extension GameViewController {
         cell.forbiddenCell()
         hasCheckedCells.append(cell)
         // 记录查看过的号码牌
-        checkNum += 1
+        numOfTap += 1
         
         // 显示角色卡
         viewModel.showRoleCard { [weak self] in
             // 所有号码牌都已查看
-            if self?.checkNum == self?.model.numConfig.gamerNum {
+            if self?.numOfTap == self?.manager.model.numConfig.gamerNum {
                 // 播放语音
                 // 显示一个倒计时动画
                 // 游戏开始
-                
+                self?.numOfTap = 0
                 self?.startGame(completion: { [weak self] in
                     if let strongSelf = self {
                         for cell in (strongSelf.hasCheckedCells)! {
@@ -215,9 +210,8 @@ extension GameViewController {
         
         viewModel.showKillingInfo(completion: { [weak self] (hasKilled) in
             if hasKilled {
-                let killedRole = self?.viewModel.selectedRole
-                self?.manager.reduce(roleModel: killedRole!)
-                self?.manager.oneDay?.killedOne = self?.viewModel.selectedIndex!
+                self?.manager.reduce(index: (self?.viewModel.selectedIndex)!)
+                self?.manager.oneDay.killedOne = self?.viewModel.selectedIndex!
                 self?.startGame(completion: nil)
             }
             self?.hideGameCard()
@@ -228,36 +222,38 @@ extension GameViewController {
     func witchCureOrPoison() {
         
         if viewModel.needSelectedMore == true {
-            viewModel.showPoisonInfo(completion: { [weak self] (hasPoison) in
-                if hasPoison {
-                    self?.manager.reduce(roleModel: (self?.viewModel.selectedRole)!)
-                    self?.manager.oneDay?.poisonOne = self?.viewModel.selectedIndex
-                    self?.startGame(completion: nil)
-                }
-                self?.hideGameCard()
-            })
+            
+            if viewModel.selectedRole?.role != .Witch {
+                viewModel.showPoisonInfo(completion: { [weak self] (hasPoison) in
+                    if hasPoison {
+                        self?.manager.reduce(index: (self?.viewModel.selectedIndex)!)
+                        self?.manager.oneDay.poisonOne = self?.viewModel.selectedIndex
+                        self?.startGame(completion: nil)
+                        self?.viewModel.needSelectedMore = false
+                    }
+                    self?.hideGameCard()
+                })
+            }
             
         } else {
             if let witch = manager.roleModel(index: viewModel.selectedIndex!) as? Witch {
-                
-                if let oneDay = manager.oneDay {
                     
-                    if let killedNum = numberCard(index: oneDay.killedOne!) {
-                        viewModel.showKilledInfo(oneDayModel: oneDay, killedNum: killedNum, completion: {[weak self] (potion, poison, poisonOne) in
-                            
-                            self?.hideGameCard()
-                            if potion == true {
-                                self?.manager.witchPotioned()
-                                witch.hasPotion = false
-                                self?.startGame(completion: nil)
-                            }
-                            
-                            if poison == true {
-                                self?.viewModel.needSelectedMore = true
-                                witch.hasPoison = false
-                            }
-                        })
-                    }
+                if let killedNum = manager.roleModel(index: manager.oneDay.killedOne!)?.numberCard {
+                    viewModel.showKilledInfo(oneDayModel: manager.oneDay, killedNum: killedNum, completion: {[weak self] (potion, poison, poisonOne) in
+                        
+                        self?.hideGameCard()
+                        if potion == true {
+                            self?.manager.witchPotioned()
+                            witch.hasPotion = false
+                            self?.startGame(completion: nil)
+                        }
+                        
+                        if poison == true {
+                            self?.viewModel.needSelectedMore = true
+                            witch.hasPoison = false
+                            self?.gameInfoTV.text = "请点击要毒的人的号码牌"
+                        }
+                    })
                 }
             }
         }
@@ -265,7 +261,7 @@ extension GameViewController {
     
     // 流程：预言家验人
     func prophetCheck() {
-        if manager.roleModel(index: viewModel.selectedIndex!)?.role == .Prophet {
+        if viewModel.selectedRole?.role == .Prophet {
             return
         }
         viewModel.showCheckedInfo { [weak self] in
@@ -278,7 +274,7 @@ extension GameViewController {
         if manager.roleModel(index: viewModel.selectedIndex!)?.role == .Hunter {
             let canShoot = manager.ifHunterCanShoot(hunterIndex: viewModel.selectedIndex!)
             viewModel.showWhetherCanShoot(canShoot: canShoot) { [weak self] in
-                self?.startGame(completion: nil)
+                self?.startGame(completion:nil)
             }
         }
     }
@@ -290,7 +286,7 @@ extension GameViewController {
         cell.addSergeantStatus()
         
         manager.becomeSergeant(index: viewModel.selectedIndex!)
-        let speakText = viewModel.selectedNumber! + "号玩家当选警长"
+        let speakText = (viewModel.selectedRole?.numberCard)! + "号玩家当选警长"
         SpeakManager.speak(speakText) { [weak self] in
             self?.startGame(completion: nil)
         }
@@ -298,23 +294,43 @@ extension GameViewController {
     
     // 流程：宣布死亡信息
     func deadInfo() {
-        if let oneDay = manager.oneDay {
+        
+        var deadRoles: [RoleModel] = []
+        if let deadOne = manager.oneDay.killedOne {
+            let cell = collection.cellForItem(at: deadOne) as! GameCardCell
+            cell.addDeadStatus()
             
-            var deadNumArr: [String] = []
-            if let deadOne = oneDay.killedOne {
-                let cell = collection.cellForItem(at: deadOne) as! GameCardCell
-                cell.addDeadStatus()
-                deadNumArr.append(numberCard(index: deadOne)!)
+            if let role = manager.roleModel(index: deadOne) {
+                deadRoles.append(role)
             }
-            if let poisonOne = oneDay.poisonOne {
-                let cell = collection.cellForItem(at: poisonOne) as! GameCardCell
-                cell.addDeadStatus()
-                deadNumArr.append(numberCard(index: poisonOne)!)
-            }
+        }
+        if let poisonOne = manager.oneDay.poisonOne {
+            let cell = collection.cellForItem(at: poisonOne) as! GameCardCell
+            cell.addDeadStatus()
             
-            manager.showDeadInfo(deadNumbers: deadNumArr, completion: { _ in 
-                
-            })
+            if let role = manager.roleModel(index: poisonOne) {
+                deadRoles.append(role)
+            }
+        }
+        let deadInfo = manager.configDeadInfo(deadRoles: deadRoles) { [weak self] () in
+            
+            self?.startGame(completion: nil)
+        }
+        gameInfoTV.text = deadInfo
+    }
+    
+    // 流程：遗言阶段
+    func lastWordTime() {
+        if let role = manager.roleModel(index: viewModel.selectedIndex!), role.hasDead == true {
+            
+            // cell显示已死亡
+            numOfTap += 1
+            if numOfTap == manager.model.numConfig.deadNum {
+                if manager.model.sergeant != nil {
+                    
+                }
+                startGame(completion: nil)
+            }
         }
     }
     

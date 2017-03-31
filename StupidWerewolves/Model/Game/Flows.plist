@@ -84,7 +84,7 @@
 		<key>FlowTitle</key>
 		<string>死亡讯息</string>
 		<key>FlowDetail</key>
-		<string>如死者有遗言则发表遗言，发表完毕后点击自己号码牌结束发言阶段，如警长死亡可点击他人号码牌移交警徽，如需发动技能则可点击自己号码牌</string>
+		<string></string>
 		<key>FlowStartVoice</key>
 		<string></string>
 		<key>FlowEndVoice</key>
@@ -97,7 +97,7 @@
 		<key>FlowDetail</key>
 		<string>玩家发言结束后请点击自己的号码牌，如狼人自爆请双击自己的号码牌，而后直接进入黑夜</string>
 		<key>FlowStartVoice</key>
-		<string>准备发言，从小号玩家开始发言语</string>
+		<string></string>
 		<key>FlowEndVoice</key>
 		<string>发言完毕，准备放逐投票</string>
 	</dict>
@@ -117,11 +117,33 @@
 		<key>FlowTitle</key>
 		<string>遗言阶段</string>
 		<key>FlowDetail</key>
-		<string>请出局的玩家发表遗言，发表完毕后点击自己号码牌结束发言阶段，</string>
+		<string>请出局的玩家发表遗言，发表完毕后点击自己号码牌结束发言阶段，如有技能，双击自己号码牌则可发动技能</string>
 		<key>FlowStartVoice</key>
 		<string></string>
 		<key>FlowEndVoice</key>
-		<string>即将进入天黑，请玩家闭眼</string>
+		<string></string>
+	</dict>
+	<key>hunterShoot</key>
+	<dict>
+		<key>FlowTitle</key>
+		<string>猎人发动技能</string>
+		<key>FlowDetail</key>
+		<string>请猎人点击枪杀的号码牌</string>
+		<key>FlowStartVoice</key>
+		<string></string>
+		<key>FlowEndVoice</key>
+		<string></string>
+	</dict>
+	<key>transferSergeant</key>
+	<dict>
+		<key>FlowTitle</key>
+		<string>移交警徽</string>
+		<key>FlowDetail</key>
+		<string>请警长点击移交警徽的号码牌，点击自己号码牌则撕掉警徽</string>
+		<key>FlowStartVoice</key>
+		<string></string>
+		<key>FlowEndVoice</key>
+		<string></string>
 	</dict>
 </dict>
 </plist>

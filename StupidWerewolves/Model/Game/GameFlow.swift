@@ -19,6 +19,7 @@ let flowEndVoiceKey = "FlowEndVoice"        // 流程结束
  */
 enum GameFlowType: String {
 
+    // 固定流程
     case roleCheck              // 查看身份
     case guardSomebody          // 守卫守人
     case werewolfKill           // 狼人杀人
@@ -29,6 +30,11 @@ enum GameFlowType: String {
     case deadInfo               // 死亡讯息
     case showTime               // 发言环节
     case voteTime               // 公投环节
+    case lastWordTime           // 遗言环节
+    
+    // 特殊流程
+    case hunterShoot            // 猎人开枪
+    case transferSergeant       // 移交警徽
 }
 
 /**
@@ -55,13 +61,21 @@ class GameFlow: NSObject {
     var flowType: GameFlowType!
     var flowInfo: Dictionary <String, String>!
     
-    // 仅第一夜
-    var onlyFirstDay: Bool!
+    // 仅一次的流程
+    var onlyOnce: Bool!
     
-    required init(flowType: GameFlowType, onlyFirstDay: Bool) {
+    required init(flowType: GameFlowType, onlyOnce: Bool) {
         self.flowType = flowType
         self.flowInfo = GameFlowInfoManager.sharedManager.allFlowsInfo[flowType.rawValue] as! Dictionary
-        self.onlyFirstDay = onlyFirstDay
+        self.onlyOnce = onlyOnce
+    }
+    
+    class func hunterShoot() -> GameFlow {
+        return self.init(flowType: .hunterShoot, onlyOnce: true)
+    }
+    
+    class func transferSergeant() -> GameFlow {
+        return self.init(flowType: .transferSergeant, onlyOnce: true)
     }
     
 }

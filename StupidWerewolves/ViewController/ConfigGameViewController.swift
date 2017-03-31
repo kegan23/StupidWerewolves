@@ -56,7 +56,7 @@ class ConfigGameViewController: UIViewController {
         
         let model = GameModel.init(config: config)
         let gameVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameVC") as! GameViewController
-        gameVC.model = model
+        gameVC.initManager(withGameModel: model)
         self.navigationController?.pushViewController(gameVC, animated: true)
     }
     

@@ -23,13 +23,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxg-cZ-poD">
-                                <rect key="frame" x="127.5" y="318.5" width="120" height="30"/>
+                                <rect key="frame" x="87.5" y="318.5" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="FCZ-6Q-zqe"/>
                                     <constraint firstAttribute="height" constant="30" id="IJk-fp-OTr"/>
+                                    <constraint firstAttribute="width" constant="200" id="UT3-m3-Yek"/>
                                 </constraints>
-                                <state key="normal" title="标准局">
+                                <state key="normal" title="预女猎白标准局（9-14）">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -132,7 +132,7 @@
                                         <color key="textColor" red="0.2666666667" green="0.64705882349999999" blue="0.81368152010000006" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="9" minValue="9" maxValue="16" translatesAutoresizingMaskIntoConstraints="NO" id="dIJ-tr-4Yc">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="9" minValue="9" maxValue="14" translatesAutoresizingMaskIntoConstraints="NO" id="dIJ-tr-4Yc">
                                         <rect key="frame" x="30" y="56" width="215" height="31"/>
                                         <connections>
                                             <action selector="numberChanged:" destination="5Dl-QK-U7c" eventType="valueChanged" id="c9L-2s-GiL"/>
@@ -328,22 +328,22 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sHc-Lf-ZeP">
-                                                    <rect key="frame" x="88" y="8" width="24" height="24"/>
+                                                    <rect key="frame" x="82" y="8" width="30" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjg-tb-ti3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="6PD-hw-rYD"/>
+                                                        <constraint firstAttribute="height" constant="30" id="6PD-hw-rYD"/>
                                                         <constraint firstItem="kjg-tb-ti3" firstAttribute="leading" secondItem="sHc-Lf-ZeP" secondAttribute="leading" id="FKa-aw-8Cd"/>
                                                         <constraint firstAttribute="bottom" secondItem="kjg-tb-ti3" secondAttribute="bottom" id="bWh-fO-Zs0"/>
-                                                        <constraint firstAttribute="width" constant="24" id="fUl-93-Nxl"/>
+                                                        <constraint firstAttribute="width" constant="30" id="fUl-93-Nxl"/>
                                                         <constraint firstItem="kjg-tb-ti3" firstAttribute="top" secondItem="sHc-Lf-ZeP" secondAttribute="top" id="sQQ-K7-mGq"/>
                                                         <constraint firstAttribute="trailing" secondItem="kjg-tb-ti3" secondAttribute="trailing" id="sxC-6f-pun"/>
                                                     </constraints>
