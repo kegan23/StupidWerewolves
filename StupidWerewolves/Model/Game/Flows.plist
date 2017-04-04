@@ -66,7 +66,7 @@
 		<key>FlowStartVoice</key>
 		<string>猎人请睁眼</string>
 		<key>FlowEndVoice</key>
-		<string>猎人请闭眼</string>
+		<string>猎人请闭眼，天亮了。</string>
 	</dict>
 	<key>sergeantCampaign</key>
 	<dict>
@@ -75,7 +75,7 @@
 		<key>FlowDetail</key>
 		<string>请竞选警长的玩家举手，发言结束后当选警长的玩家请点击自己的号码牌</string>
 		<key>FlowStartVoice</key>
-		<string>天亮了，现在开始警长竞选，想要竞选警长的玩家请举手</string>
+		<string>现在开始警长竞选，想要竞选警长的玩家请举手</string>
 		<key>FlowEndVoice</key>
 		<string></string>
 	</dict>

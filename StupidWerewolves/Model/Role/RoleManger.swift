@@ -17,10 +17,7 @@ let Max_Gamer_Num = 15
  */
 class RoleManger: NSObject {
 
-    static let sharedManager = RoleManger()
-    private override init() {}
     private var godArray: [RoleModel] = [Witch.init(), Prophet.init(), Hunter.init(), Idiot.init()]
-    
     
     // 获取神职数组
     private func configGodArray(num: Int) -> [RoleModel] {
@@ -30,6 +27,7 @@ class RoleManger: NSObject {
         }
         return godArray
     }
+    
     // 获取狼人数组
     private func configWereWolfArray(num: Int) -> [RoleModel] {
         var wolves:[RoleModel] = []

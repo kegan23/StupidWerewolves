@@ -287,7 +287,7 @@ extension GameViewController {
         
         manager.becomeSergeant(index: viewModel.selectedIndex!)
         let speakText = (viewModel.selectedRole?.numberCard)! + "号玩家当选警长"
-        SpeakManager.speak(speakText) { [weak self] in
+        SpeakManager.sharedManager.speak(speakText) { [weak self] in
             self?.startGame(completion: nil)
         }
     }
@@ -316,7 +316,9 @@ extension GameViewController {
             
             self?.startGame(completion: nil)
         }
-        gameInfoTV.text = deadInfo
+        DispatchQueue.main.async(execute: {
+            self.gameInfoTV.text = deadInfo
+        })
     }
     
     // 流程：遗言阶段
@@ -324,6 +326,9 @@ extension GameViewController {
         if let role = manager.roleModel(index: viewModel.selectedIndex!), role.hasDead == true {
             
             // cell显示已死亡
+            let cell = collection.cellForItem(at: viewModel.selectedIndex!) as! GameCardCell
+            cell.forbiddenCell()
+            
             numOfTap += 1
             if numOfTap == manager.model.numConfig.deadNum {
                 if manager.model.sergeant != nil {

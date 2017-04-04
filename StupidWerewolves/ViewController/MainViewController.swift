@@ -13,14 +13,26 @@ let isPhone = UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone
 
 class MainViewController: UIViewController {
 
+    @IBOutlet var debugView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let tapGR = UITapGestureRecognizer.init(target: self, action: #selector(enterDebugVc))
+        tapGR.numberOfTapsRequired = 4
+        tapGR.numberOfTouchesRequired = 1
+        self.debugView.addGestureRecognizer(tapGR)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func enterDebugVc() {
+        let debugVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DebugViewController") as! DebugViewController
+        self.navigationController?.pushViewController(debugVC, animated: true)
     }
 }
 

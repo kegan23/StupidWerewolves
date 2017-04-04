@@ -20,6 +20,7 @@
 		4B518CF51E850E060015DF4C /* Flows.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B518CF41E850E060015DF4C /* Flows.plist */; };
 		4B5E28DD1E836B5200726783 /* GameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E28DC1E836B5200726783 /* GameCardView.swift */; };
 		4B5E28DF1E836B5E00726783 /* GameCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5E28DE1E836B5E00726783 /* GameCardView.xib */; };
+		4B7BB2C51E8F32F200378E58 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7BB2C41E8F32F200378E58 /* DebugViewController.swift */; };
 		4B800E081E7A7823007BF74C /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E021E7A7823007BF74C /* GameConfig.swift */; };
 		4B800E091E7A7823007BF74C /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E031E7A7823007BF74C /* GameManager.swift */; };
 		4B800E0A1E7A7823007BF74C /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B800E041E7A7823007BF74C /* GameModel.swift */; };
@@ -69,6 +70,7 @@
 		4B518CF41E850E060015DF4C /* Flows.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Flows.plist; sourceTree = "<group>"; };
 		4B5E28DC1E836B5200726783 /* GameCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCardView.swift; sourceTree = "<group>"; };
 		4B5E28DE1E836B5E00726783 /* GameCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameCardView.xib; sourceTree = "<group>"; };
+		4B7BB2C41E8F32F200378E58 /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		4B800E021E7A7823007BF74C /* GameConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
 		4B800E031E7A7823007BF74C /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		4B800E041E7A7823007BF74C /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				4B800E121E7A8ABE007BF74C /* MainViewController.swift */,
 				4B800E111E7A8ABE007BF74C /* ConfigGameViewController.swift */,
 				4B800E151E7A953E007BF74C /* GameViewController.swift */,
+				4B7BB2C41E8F32F200378E58 /* DebugViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				4BB2E8B51E8217860050075E /* SpeakManager.swift in Sources */,
 				4B800E0B1E7A7823007BF74C /* RoleManger.swift in Sources */,
 				4B800E161E7A953E007BF74C /* GameViewController.swift in Sources */,
+				4B7BB2C51E8F32F200378E58 /* DebugViewController.swift in Sources */,
 				4B800E081E7A7823007BF74C /* GameConfig.swift in Sources */,
 				4B1351F71E62A24A00CBAD00 /* AppDelegate.swift in Sources */,
 				4B800E131E7A8ABE007BF74C /* ConfigGameViewController.swift in Sources */,

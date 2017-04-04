@@ -26,7 +26,7 @@ class ConfigGameViewController: UIViewController {
         
         initData()
         refreshUI()
-        
+                
         // Do any additional setup after loading the view.
     }
     
@@ -55,7 +55,7 @@ class ConfigGameViewController: UIViewController {
     @IBAction func playGame() {
         
         let model = GameModel.init(config: config)
-        let gameVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameVC") as! GameViewController
+        let gameVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
         gameVC.initManager(withGameModel: model)
         self.navigationController?.pushViewController(gameVC, animated: true)
     }

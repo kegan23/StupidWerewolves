@@ -23,7 +23,7 @@ class GameModel: NSObject {
     
     required init(config: GameConfig) {
         
-        roles = RoleManger.sharedManager.configRoleArray(config: config)
+        roles = RoleManger().configRoleArray(config: config)
         for (i, role) in roles.enumerated() {
             role.numberCard = "\(i + 1)"
             print("\(role.numberCard)号：\(role.role.rawValue)")

@@ -43,8 +43,8 @@ class GameManager: NSObject {
             flows.append(GameFlow.init(flowType: .prophetCheck, onlyOnce: false))
             flows.append(GameFlow.init(flowType: .hunterCanShootOrNot, onlyOnce: false))
             flows.append(GameFlow.init(flowType: .sergeantCampaign, onlyOnce: true))
-            flows.append(GameFlow.init(flowType: .lastWordTime, onlyOnce: true))
             flows.append(GameFlow.init(flowType: .deadInfo, onlyOnce: false))
+            flows.append(GameFlow.init(flowType: .lastWordTime, onlyOnce: true))
             flows.append(GameFlow.init(flowType: .showTime, onlyOnce: false))
             flows.append(GameFlow.init(flowType: .voteTime, onlyOnce: false))
             flows.append(GameFlow.init(flowType: .lastWordTime, onlyOnce: false))
@@ -86,9 +86,13 @@ class GameManager: NSObject {
                         if !flow.onlyOnce {
                             self?.model.flows.append(flow)
                         }
+                        
+                        print("current flow: \(flow.flowInfo[flowTitleKey])")
                         completion?(flow)
-                        voiceText += ("。" + flow.flowInfo[flowStartVoiceKey]!)
-                        SpeakManager.speak(voiceText, completion: nil)
+                        if flow.flowInfo[flowStartVoiceKey]!.characters.count > 0 || voiceText.characters.count > 0 {
+                            voiceText += ("。" + flow.flowInfo[flowStartVoiceKey]!)
+                            SpeakManager.sharedManager.speak(voiceText, completion: nil)
+                        }
                     }
                 }
             }
@@ -110,7 +114,7 @@ class GameManager: NSObject {
             } else {
                 if self?.currentFlow != nil {
                     let speakText = self?.currentFlow?.flowInfo[flowEndVoiceKey]
-                    SpeakManager.speak(speakText!, completion: {
+                    SpeakManager.sharedManager.speak(speakText!, completion: {
                         completion()
                     })
                 } else {
@@ -242,17 +246,22 @@ extension GameManager {
             
         } else {
             
-            var deadInfo: String = ""
-            
-            let reversedRoles = Array.init(arrayLiteral: roles.reversed())
-            let tempRoles = randomOne(arr: [roles, reversedRoles]) as! [RoleModel]
-            
-            for role in tempRoles {
-                if role.numberCard != nil {
-                    deadInfo += role.numberCard!
+            var deadNum: String = ""
+            if roles.count == 1 {
+                deadNum = (roles.first?.numberCard)! + "号"
+            } else {
+                let reversedRoles = Array(roles.reversed())
+//                    NSArray.init(array: roles.reversed())
+//                    Array.init(arrayLiteral: roles.reversed())
+                let tempRoles = randomOne(arr: [roles, reversedRoles]) as! [RoleModel]
+                
+                for role in tempRoles {
+                    if role.numberCard != nil {
+                        deadNum += role.numberCard! + "号"
+                    }
                 }
             }
-            
+                
             var sergeantDead = false
             if model.sergeant == oneDay.killedOne || model.sergeant == oneDay.poisonOne {
                 sergeantDead = true
@@ -264,15 +273,15 @@ extension GameManager {
                 lastWord = "请死者发表遗言"
             }
             if sergeantDead {
-                deadInfo = "昨夜死亡的是\(deadInfo)，\(lastWord)并移交警徽"
+                deadInfo = "昨夜死亡的是\(deadNum)，\(lastWord)，请移交警徽"
                 // 增加移交流程
                 insertFlow(GameFlow.transferSergeant())
             } else {
-                deadInfo = "昨夜死亡的是\(deadInfo)，\(lastWord)"
+                deadInfo = "昨夜死亡的是\(deadNum)，\(lastWord)"
             }
         }
         
-        SpeakManager.speak(deadInfo, completion: {
+        SpeakManager.sharedManager.speak(deadInfo, completion: {
             completion?()
         })
         return deadInfo
@@ -289,7 +298,7 @@ extension GameManager {
             speak = "从警\(exInfo)玩家开始发言"
         }
         
-        SpeakManager.speak(speak, completion: completion)
+        SpeakManager.sharedManager.speak(speak, completion: completion)
     }
 }
 
